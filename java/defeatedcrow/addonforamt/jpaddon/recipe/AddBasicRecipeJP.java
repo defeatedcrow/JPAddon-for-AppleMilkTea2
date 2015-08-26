@@ -71,6 +71,74 @@ public class AddBasicRecipeJP {
 				'Y',
 				"gemDiamond" }));
 
+		// gems
+		for (int i = 0; i < 2; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gemBlocks, 1, i), new Object[] {
+					"XX",
+					"XX",
+					'X',
+					new ItemStack(AddonJPCore.gems, 1, i) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gemBlocks, 4, 2 + i), new Object[] {
+					"XX",
+					"XX",
+					'X',
+					new ItemStack(AddonJPCore.gemBlocks, 1, i) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gemBlocks, 4, i), new Object[] {
+					"XX",
+					"XX",
+					'X',
+					new ItemStack(AddonJPCore.gemBlocks, 1, 2 + i) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gems, 4, i), new Object[] {
+					"X",
+					'X',
+					new ItemStack(AddonJPCore.gemBlocks, 1, i) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gemHalf, 6, i), new Object[] {
+					"XXX",
+					'X',
+					new ItemStack(AddonJPCore.gemBlocks, 1, i) }));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.gemHalf, 6, i + 2), new Object[] {
+					"XXX",
+					'X',
+					new ItemStack(AddonJPCore.gemBlocks, 1, i + 2) }));
+		}
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.saltStairs, 4, 0), new Object[] {
+				"X  ",
+				"XX ",
+				"XXX",
+				'X',
+				new ItemStack(AddonJPCore.gemBlocks, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.alabasterStairs, 4, 0), new Object[] {
+				"X  ",
+				"XX ",
+				"XXX",
+				'X',
+				new ItemStack(AddonJPCore.gemBlocks, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.alabasterLamp, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				"gemAlabaster",
+				'Y',
+				new ItemStack(Blocks.torch, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.alabasterChandelier, 1, 0), new Object[] {
+				" X ",
+				"XYX",
+				" X ",
+				'X',
+				new ItemStack(AddonJPCore.alabasterLamp, 1, 0),
+				'Y',
+				"ingotIron" }));
+
 		// container
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.linenCont, 1, 0), new Object[] {
 				"XXX",
@@ -282,6 +350,34 @@ public class AddBasicRecipeJP {
 				"cropCorn",
 				"bucketMilk" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 11), new Object[] {
+				"toolGrater",
+				"fishCrab",
+				"miso",
+				"cropLeek" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {
+				"toolGrater",
+				"foodDough" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 1), new Object[] {
+				"toolGrater",
+				"foodDough",
+				"foodKansui" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {
+				"toolGrater",
+				"cropWheat",
+				"dustSalt",
+				"bucketWater" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 1), new Object[] {
+				"toolGrater",
+				"cropWheat",
+				"dustSalt",
+				"bucketWater",
+				"foodKansui" }));
+
 		// brewing material
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.fluidMaterials, 1, 0), new Object[] {
 				"bucketWater",
@@ -300,6 +396,14 @@ public class AddBasicRecipeJP {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.fluidMaterials, 1, 1), new Object[] {
 				new ItemStack(DCsAppleMilk.moromi, 1, 0),
 				"bottleVinegar" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.materials, 2, 2), new Object[] {
+				"toolGrater",
+				"gemSalt" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye, 2, 15), new Object[] {
+				"toolGrater",
+				"gemAlabaster" }));
 
 	}
 
@@ -374,6 +478,37 @@ public class AddBasicRecipeJP {
 				"cookingRice",
 				"mayonnaise" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.riceBowls_jp, 1, 3), new Object[] {
+				"cookingRice",
+				new ItemStack(AddonJPCore.squareDish, 1, 3) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.woodBowls, 1, 3), new Object[] {
+				"foodChineseNoodle",
+				new ItemStack(DCsAppleMilk.baseSoupBowl, 1, 5),
+				"dustSalt",
+				"foodEgg",
+				new ItemStack(Items.cooked_porkchop, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.woodBowls, 1, 4), new Object[] {
+				"foodChineseNoodle",
+				new ItemStack(DCsAppleMilk.baseSoupBowl, 1, 4),
+				"cropSpinach",
+				"foodEgg",
+				new ItemStack(Items.cooked_porkchop, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.woodBowls, 1, 4), new Object[] {
+				"foodChineseNoodle",
+				new ItemStack(DCsAppleMilk.baseSoupBowl, 1, 4),
+				"cropLeek",
+				"foodEgg",
+				new ItemStack(Items.cooked_porkchop, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.squareDish, 1, 3), new Object[] {
+				"cropSansho",
+				"foodEel",
+				"dustSugar",
+				"bottleSoySauce" }));
+
 	}
 
 	static void addKimono() {
@@ -396,7 +531,7 @@ public class AddBasicRecipeJP {
 				"XXX",
 				"XXX",
 				'X',
-				"craftingCloth" }));
+				"itemCottonCloth" }));
 
 		// adv kimono
 
@@ -424,6 +559,9 @@ public class AddBasicRecipeJP {
 
 		GameRegistry.addSmelting(new ItemStack(AddonJPCore.materials, 1, 1),
 				new ItemStack(AddonJPCore.squareDish, 1, 1), 0.3F);
+
+		GameRegistry.addSmelting(new ItemStack(AddonJPCore.fishes, 1, 3), new ItemStack(AddonJPCore.squareDish, 1, 4),
+				0.3F);
 
 		GameRegistry.addSmelting(new ItemStack(AddonJPCore.dough, 1, 0), new ItemStack(AddonJPCore.jpDish, 1, 6), 0.3F);
 

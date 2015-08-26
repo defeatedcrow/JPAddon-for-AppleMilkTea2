@@ -37,5 +37,4 @@ public class ItemJPBowls_JP extends ItemJPBowls {
 		}
 		return false;
 	}
-
 }

@@ -24,7 +24,10 @@ public class ItemNoDish extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconType[];
 
-	private static final String[] nameType = new String[] { "masuzushi", "cheese", "salad" };
+	private static final String[] nameType = new String[] {
+			"masuzushi",
+			"cheese",
+			"salad" };
 
 	public ItemNoDish() {
 		super(true, false);
@@ -36,7 +39,9 @@ public class ItemNoDish extends EdibleEntityItem2 {
 	@Override
 	public int[] hungerOnEaten(int meta) {
 		int a = meta == 2 ? 4 : 8;
-		return new int[] { a, 3 };
+		return new int[] {
+				a,
+				3 };
 	}
 
 	@Override
@@ -109,5 +114,4 @@ public class ItemNoDish extends EdibleEntityItem2 {
 		}
 		return super.onEaten(itemStack, world, player);
 	}
-
 }

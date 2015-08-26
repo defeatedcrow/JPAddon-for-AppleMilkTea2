@@ -20,6 +20,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import defeatedcrow.addonforamt.jpaddon.api.RecipeManagerJP;
 import defeatedcrow.addonforamt.jpaddon.common.CommonProxyAJP;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityGlassBowl;
@@ -30,11 +31,15 @@ import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPDrinks;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPRice;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPRice_JP;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityNoDish;
+import defeatedcrow.addonforamt.jpaddon.common.entity.EntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntitySquarePlate;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowl;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowls_JP;
+import defeatedcrow.addonforamt.jpaddon.common.entity.WindProjectile;
+import defeatedcrow.addonforamt.jpaddon.event.AJPCraftingEvent;
 import defeatedcrow.addonforamt.jpaddon.event.GrassHarvestEvent;
 import defeatedcrow.addonforamt.jpaddon.event.HurtEventJP;
+import defeatedcrow.addonforamt.jpaddon.event.OnFishingEvent;
 import defeatedcrow.addonforamt.jpaddon.event.PlayerKimonoEvent;
 import defeatedcrow.addonforamt.jpaddon.plugin.PluginHandler;
 import defeatedcrow.addonforamt.jpaddon.recipe.AddBasicRecipeJP;
@@ -42,8 +47,10 @@ import defeatedcrow.addonforamt.jpaddon.recipe.AddMachineRecipe;
 import defeatedcrow.addonforamt.jpaddon.recipe.DrierRecipeRegister;
 import defeatedcrow.addonforamt.jpaddon.recipe.FermenterRecipeRegister;
 import defeatedcrow.addonforamt.jpaddon.recipe.OreRegisterJP;
+import defeatedcrow.addonforamt.jpaddon.world.AddFishingHooks;
+import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
 
-@Mod(modid = "AMTAddonJP", name = "AddonforAMT-JP", version = "1.7.10_1.0c", dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk;after:FluidityDC")
+@Mod(modid = "AMTAddonJP", name = "AddonforAMT-JP", version = "1.7.10_1.2a", dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk@[1.7.10_2.8e,);after:FluidityDC")
 public class AddonJPCore {
 
 	@SidedProxy(clientSide = "defeatedcrow.addonforamt.jpaddon.client.ClientProxyAJP", serverSide = "defeatedcrow.addonforamt.jpaddon.common.CommonProxyAJP")
@@ -61,6 +68,10 @@ public class AddonJPCore {
 	public static Item dough;
 	public static Item bottle;
 	public static Item fluidMaterials;
+	public static Item gems;
+	public static Item fishes;
+	public static Item noodle;
+	public static Item roastPig;
 
 	// tools
 	public static Item woodenGrater;
@@ -97,6 +108,16 @@ public class AddonJPCore {
 	public static Block linenCont;
 	public static Block cardboardJP;
 
+	public static Block ores;
+	public static Block gemBlocks;
+
+	public static Block gemHalf;
+	public static Block gemHalf_double;
+	public static Block saltStairs;
+	public static Block alabasterStairs;
+	public static Block alabasterLamp;
+	public static Block alabasterChandelier;
+
 	// fluids
 	public static Fluid shoyu_young;
 	public static Fluid komezu_young;
@@ -106,6 +127,9 @@ public class AddonJPCore {
 
 	// renders
 	public static int renderNum1;
+	public static int renderOres;
+	public static int renderLamp;
+	public static int renderChandelier;
 
 	// guis
 	public int guiDryingRack = 1;
@@ -151,6 +175,7 @@ public class AddonJPCore {
 			luck = Potion.regeneration;
 		}
 
+		PluginHandler.loadPre();
 	}
 
 	@EventHandler
@@ -165,7 +190,9 @@ public class AddonJPCore {
 		MinecraftForge.EVENT_BUS.register(new HurtEventJP());
 		MinecraftForge.EVENT_BUS.register(new GrassHarvestEvent());
 		MinecraftForge.EVENT_BUS.register(new PlayerKimonoEvent());
+		MinecraftForge.EVENT_BUS.register(new OnFishingEvent());
 		FMLCommonHandler.instance().bus().register(new PlayerKimonoEvent());
+		FMLCommonHandler.instance().bus().register(new AJPCraftingEvent());
 
 		// entity
 
@@ -180,6 +207,9 @@ public class AddonJPCore {
 		int idJPBowl2 = 8; // EntityRegistry.findGlobalUniqueEntityId();
 		int idRiceBowl2 = 9; // EntityRegistry.findGlobalUniqueEntityId();
 		int idWoodBowl2 = 10; // EntityRegistry.findGlobalUniqueEntityId();
+		int idRoastPig = 12; // EntityRegistry.findGlobalUniqueEntityId();
+
+		int windProj = 11;
 
 		EntityRegistry.registerModEntity(EntityJPDish.class, "amtjp.entity.dish_jp", idJPDish, this, 250, 5, true);
 		EntityRegistry.registerModEntity(EntityJPBowl.class, "amtjp.entity.bowl_jp", idJPBowl, this, 250, 5, true);
@@ -198,12 +228,24 @@ public class AddonJPCore {
 				250, 5, true);
 		EntityRegistry.registerModEntity(EntityWoodBowls_JP.class, "amtjp.entity.bowl_wood_bamboo", idWoodBowl2, this,
 				250, 5, true);
+		EntityRegistry
+				.registerModEntity(EntityRoastPig.class, "amtjp.entity.roast_pig", idRoastPig, this, 125, 5, true);
+
+		EntityRegistry.registerModEntity(WindProjectile.class, "amtjp.entity.projectile_wind", windProj, this, 125, 5,
+				true);
 
 		// render
 		renderNum1 = proxy.getRenderID();
+		renderOres = proxy.getRenderID();
+		renderLamp = proxy.getRenderID();
+		renderChandelier = proxy.getRenderID();
 
 		proxy.registerRenderers();
 		proxy.registerTileEntity();
+
+		// gen
+		GameRegistry.registerWorldGenerator(new WorldGenAJPOres(), 2);
+		AddFishingHooks.addFishing();
 
 		// gui
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
@@ -228,11 +270,11 @@ public class AddonJPCore {
 	}
 
 	public int getMinorVersion() {
-		return 0;
+		return 2;
 	}
 
 	public String getRivision() {
-		return "c";
+		return "a";
 	}
 
 	public String getModName() {

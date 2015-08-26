@@ -1,23 +1,23 @@
 package defeatedcrow.addonforamt.jpaddon.client.entity;
 
+import mods.defeatedcrow.client.entity.base.ModelInnerSoup;
+import mods.defeatedcrow.client.entity.base.RenderFoodEntityBase;
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import defeatedcrow.addonforamt.jpaddon.client.model.inner.ModelSoupInner;
-import defeatedcrow.addonforamt.jpaddon.common.entity.EntityFoodBase;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
-
-public class RenderEntityWoodBowl extends JPRenderEntityBase {
+public class RenderEntityWoodBowl extends RenderFoodEntityBase {
 
 	protected static final ResourceLocation NASU_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/gu_nasutomato.png");
-	private ModelSoupInner model = new ModelSoupInner();
+	private ModelInnerSoup model = new ModelInnerSoup();
 
 	@Override
-	protected void renderDeco(EntityFoodBase entity, byte meta, Deco deco, double par2, double par4, double par6,
+	protected void renderDeco(FoodBaseEntity entity, byte meta, Deco deco, double par2, double par4, double par6,
 			float par8, float par9) {
 
 		if (meta == 0) {

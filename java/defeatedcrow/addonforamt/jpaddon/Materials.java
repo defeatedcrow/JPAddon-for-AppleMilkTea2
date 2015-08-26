@@ -9,20 +9,31 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockAlabasterChandelier;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockAlabasterLamp;
 import defeatedcrow.addonforamt.jpaddon.common.block.BlockCardboardJP;
 import defeatedcrow.addonforamt.jpaddon.common.block.BlockDryingRack;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockGemBlocks;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockGemHalfs;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockGemStairs;
 import defeatedcrow.addonforamt.jpaddon.common.block.BlockLinenContainer;
+import defeatedcrow.addonforamt.jpaddon.common.block.BlockOres;
 import defeatedcrow.addonforamt.jpaddon.common.block.ItemCardboardJP;
+import defeatedcrow.addonforamt.jpaddon.common.block.ItemGemBlocks;
+import defeatedcrow.addonforamt.jpaddon.common.block.ItemOres;
 import defeatedcrow.addonforamt.jpaddon.common.fluid.BlockDummyFluidJP;
 import defeatedcrow.addonforamt.jpaddon.common.fluid.ItemDummyFluidJP;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemAdvGrater;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemBottles;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemDough;
+import defeatedcrow.addonforamt.jpaddon.common.item.ItemFish;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemFluidMaterials;
+import defeatedcrow.addonforamt.jpaddon.common.item.ItemGems;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemLinenBall;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemLinenCloth;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemMaterials;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemMincedJP;
+import defeatedcrow.addonforamt.jpaddon.common.item.ItemNoodle;
 import defeatedcrow.addonforamt.jpaddon.common.item.ItemTeaLeaves;
 import defeatedcrow.addonforamt.jpaddon.common.item.armor.ArmorKimonoBase;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemGlassBowls;
@@ -31,6 +42,7 @@ import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemJPBowls_JP;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemJPDish;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemJPDrinks;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemNoDish;
+import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemPig;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemRiceBowls;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemRiceBowls_JP;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemSquareDish;
@@ -65,6 +77,16 @@ public class Materials {
 		AddonJPCore.materials = new ItemMaterials().setUnlocalizedName("addonamtjp.materials").setCreativeTab(
 				AddonJPCore.amtjpTab);
 		GameRegistry.registerItem(AddonJPCore.materials, "addonamtjp.materials");
+
+		AddonJPCore.gems = new ItemGems().setUnlocalizedName("addonamtjp.gems").setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerItem(AddonJPCore.gems, "addonamtjp.gems");
+
+		AddonJPCore.fishes = new ItemFish().setUnlocalizedName("addonamtjp.fish").setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerItem(AddonJPCore.fishes, "addonamtjp.fish");
+
+		AddonJPCore.noodle = new ItemNoodle().setUnlocalizedName("addonamtjp.noodle").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerItem(AddonJPCore.noodle, "addonamtjp.noodle");
 
 		AddonJPCore.teaLeaves = new ItemTeaLeaves().setUnlocalizedName("addonamtjp.tealeaves").setCreativeTab(
 				AddonJPCore.amtjpTab);
@@ -126,6 +148,10 @@ public class Materials {
 		AddonJPCore.woodBowls = new ItemWoodBowls().setUnlocalizedName("addonamtjp.bowl_wood").setCreativeTab(
 				AddonJPCore.amtjpTab);
 		GameRegistry.registerItem(AddonJPCore.woodBowls, "addonamtjp.bowl_wood");
+
+		AddonJPCore.roastPig = new ItemPig().setUnlocalizedName("addonamtjp.roast_pig").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerItem(AddonJPCore.roastPig, "addonamtjp.roast_pig");
 
 		// bamboo
 		AddonJPCore.riceBowls_jp = new ItemRiceBowls_JP().setUnlocalizedName("addonamtjp.bowl_rice_bamboo")
@@ -211,6 +237,37 @@ public class Materials {
 		AddonJPCore.cardboardJP = new BlockCardboardJP().setBlockName("addonamtjp.cardboard_jp").setCreativeTab(
 				AddonJPCore.amtjpTab);
 		GameRegistry.registerBlock(AddonJPCore.cardboardJP, ItemCardboardJP.class, "addonamtjp.cardboard_jp");
+
+		AddonJPCore.ores = new BlockOres().setBlockName("addonamtjp.ores").setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.ores, ItemOres.class, "addonamtjp.ores");
+
+		AddonJPCore.gemBlocks = new BlockGemBlocks().setBlockName("addonamtjp.gem")
+				.setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.gemBlocks, ItemGemBlocks.class, "addonamtjp.gem");
+
+		AddonJPCore.gemHalf = new BlockGemHalfs(false).setBlockName("addonamtjp.half").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.gemHalf, ItemGemBlocks.class, "addonamtjp.half");
+
+		AddonJPCore.gemHalf_double = new BlockGemHalfs(true).setBlockName("addonamtjp.doublehalf").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.gemHalf_double, ItemGemBlocks.class, "addonamtjp.doublehalf");
+
+		AddonJPCore.saltStairs = new BlockGemStairs(AddonJPCore.gemBlocks, 0).setBlockName("addonamtjp.stairs_salt")
+				.setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.saltStairs, "addonamtjp.stairs_salt");
+
+		AddonJPCore.alabasterStairs = new BlockGemStairs(AddonJPCore.gemBlocks, 1).setBlockName(
+				"addonamtjp.stairs_alabaster").setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.alabasterStairs, "addonamtjp.stairs_alabaster");
+
+		AddonJPCore.alabasterLamp = new BlockAlabasterLamp().setBlockName("addonamtjp.lamp_alabaster").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.alabasterLamp, "addonamtjp.lamp_alabaster");
+
+		AddonJPCore.alabasterChandelier = new BlockAlabasterChandelier()
+				.setBlockName("addonamtjp.chandelier_alabaster").setCreativeTab(AddonJPCore.amtjpTab);
+		GameRegistry.registerBlock(AddonJPCore.alabasterChandelier, "addonamtjp.chandelier_alabaster");
 
 	}
 

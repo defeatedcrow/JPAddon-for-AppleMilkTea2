@@ -27,8 +27,15 @@ public class ItemJPDish extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconType[];
 
-	private static final String[] nameType = new String[] { "oniman", "kusamochi", "matchacake", "hoshiimo", "soycake",
-			"senbei", "brownie", "daihuku_strawberry" };
+	private static final String[] nameType = new String[] {
+			"oniman",
+			"kusamochi",
+			"matchacake",
+			"hoshiimo",
+			"soycake",
+			"senbei",
+			"brownie",
+			"daihuku_strawberry" };
 
 	public ItemJPDish() {
 		super(true, false);
@@ -39,7 +46,9 @@ public class ItemJPDish extends EdibleEntityItem2 {
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		return new int[] { 2, 2 };
+		return new int[] {
+				2,
+				2 };
 	}
 
 	@Override
@@ -108,5 +117,4 @@ public class ItemJPDish extends EdibleEntityItem2 {
 		ret.add(new PotionEffect(Potion.heal.id, 1, 1));
 		return ret;
 	}
-
 }

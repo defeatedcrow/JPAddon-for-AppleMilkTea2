@@ -1,6 +1,7 @@
 package defeatedcrow.addonforamt.jpaddon.client;
 
 import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -10,7 +11,12 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import defeatedcrow.addonforamt.jpaddon.AJPLogger;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
+import defeatedcrow.addonforamt.jpaddon.client.block.RenderAlabasterChandelier;
+import defeatedcrow.addonforamt.jpaddon.client.block.RenderAlabasterLamp;
 import defeatedcrow.addonforamt.jpaddon.client.block.RenderBlockDryingRack;
+import defeatedcrow.addonforamt.jpaddon.client.block.RenderOres;
+import defeatedcrow.addonforamt.jpaddon.client.block.RenderTileAlabasterChandelier;
+import defeatedcrow.addonforamt.jpaddon.client.block.RenderTileAlabasterLamp;
 import defeatedcrow.addonforamt.jpaddon.client.block.RenderTileDryingRack;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityGlassDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityJPBowl;
@@ -18,11 +24,16 @@ import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityJPDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityJPDrink;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityNoDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityRiceBowl;
+import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntitySquareDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityWoodBowl;
+import defeatedcrow.addonforamt.jpaddon.client.entity.RenderWindProjectile;
 import defeatedcrow.addonforamt.jpaddon.client.item.ModelHaori;
 import defeatedcrow.addonforamt.jpaddon.client.item.ModelKimonoTite;
+import defeatedcrow.addonforamt.jpaddon.client.item.RenderItemRoastPig;
 import defeatedcrow.addonforamt.jpaddon.common.CommonProxyAJP;
+import defeatedcrow.addonforamt.jpaddon.common.block.TileAlabasterLamp;
+import defeatedcrow.addonforamt.jpaddon.common.block.TileChandelier;
 import defeatedcrow.addonforamt.jpaddon.common.block.TileDryingRack;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityGlassBowl;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPBowl;
@@ -30,8 +41,10 @@ import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPDish;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPDrinks;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPRice;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityNoDish;
+import defeatedcrow.addonforamt.jpaddon.common.entity.EntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntitySquarePlate;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowl;
+import defeatedcrow.addonforamt.jpaddon.common.entity.WindProjectile;
 import defeatedcrow.addonforamt.jpaddon.plugin.nei.AJPPluginNEI;
 
 public class ClientProxyAJP extends CommonProxyAJP {
@@ -52,6 +65,11 @@ public class ClientProxyAJP extends CommonProxyAJP {
 	@Override
 	public void registerRenderers() {
 		RenderingRegistry.registerBlockHandler(new RenderBlockDryingRack());
+		RenderingRegistry.registerBlockHandler(new RenderOres());
+		RenderingRegistry.registerBlockHandler(new RenderAlabasterLamp());
+		RenderingRegistry.registerBlockHandler(new RenderAlabasterChandelier());
+
+		MinecraftForgeClient.registerItemRenderer(AddonJPCore.roastPig, new RenderItemRoastPig());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityJPDish.class, new RenderEntityJPDish());
 		RenderingRegistry.registerEntityRenderingHandler(EntityJPBowl.class, new RenderEntityJPBowl());
@@ -61,11 +79,17 @@ public class ClientProxyAJP extends CommonProxyAJP {
 		RenderingRegistry.registerEntityRenderingHandler(EntityGlassBowl.class, new RenderEntityGlassDish());
 		RenderingRegistry.registerEntityRenderingHandler(EntityNoDish.class, new RenderEntityNoDish());
 		RenderingRegistry.registerEntityRenderingHandler(EntityJPDrinks.class, new RenderEntityJPDrink());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRoastPig.class, new RenderEntityRoastPig());
+		RenderingRegistry.registerEntityRenderingHandler(WindProjectile.class, new RenderWindProjectile());
 	}
 
 	@Override
 	public void registerTileEntity() {
 		ClientRegistry.registerTileEntity(TileDryingRack.class, "amtjp.tile.drying_rack", new RenderTileDryingRack());
+		ClientRegistry.registerTileEntity(TileAlabasterLamp.class, "amtjp.tile.lamp_alabaster",
+				new RenderTileAlabasterLamp());
+		ClientRegistry.registerTileEntity(TileChandelier.class, "amtjp.tile.chandelier_alabaster",
+				new RenderTileAlabasterChandelier());
 	}
 
 	@Override

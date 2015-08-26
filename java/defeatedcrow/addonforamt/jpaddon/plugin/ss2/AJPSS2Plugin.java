@@ -1,12 +1,12 @@
 package defeatedcrow.addonforamt.jpaddon.plugin.ss2;
 
 import mods.defeatedcrow.common.DCsAppleMilk;
+import mods.defeatedcrow.handler.Util;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import shift.sextiarysector.SSItems;
 import shift.sextiarysector.api.recipe.RecipeAPI;
 import shift.sextiarysector.item.ItemUnit;
 import shift.sextiarysector.recipe.FurnaceCraftingManager;
@@ -53,22 +53,31 @@ public class AJPSS2Plugin {
 	}
 
 	static void addBasicRecipe() {
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.samue, 1, 0), new Object[] {
-				new ItemStack(AddonJPCore.basicHaori[0], 1, 0),
-				new ItemStack(SSItems.hammer, 1, 0) }));
+		Item item = Util.getModItem("SextiarySector", "Hammer");
+		if (item != null) {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.samue, 1, 0), new Object[] {
+					new ItemStack(AddonJPCore.basicHaori[0], 1, 0),
+					new ItemStack(item, 1, 0) }));
+		}
+
 	}
 
 	static void addMachineRecipe() {
 		// unit
-		FurnaceCraftingManager.getInstance().addShapelessRecipe(new ItemStack(iceRustUnit, 1, 0), new Object[] {
-				new ItemStack(DCsAppleMilk.icyCrystal, 1, 0),
-				new ItemStack(SSItems.magicDust, 1, 0),
-				new ItemStack(SSItems.unit, 1, 0) });
+		Item item = Util.getModItem("SextiarySector", "Unit");
+		Item item2 = Util.getModItem("SextiarySector", "MagicDust");
+		if (item != null && item2 != null) {
+			FurnaceCraftingManager.getInstance().addShapelessRecipe(new ItemStack(iceRustUnit, 1, 0), new Object[] {
+					new ItemStack(DCsAppleMilk.icyCrystal, 1, 0),
+					new ItemStack(item2, 1, 0),
+					new ItemStack(item, 1, 0) });
 
-		FurnaceCraftingManager.getInstance().addShapelessRecipe(new ItemStack(antidoteRustUnit, 1, 0), new Object[] {
-				new ItemStack(DCsAppleMilk.princessClam, 1, 0),
-				new ItemStack(SSItems.magicDust, 1, 0),
-				new ItemStack(SSItems.unit, 1, 0) });
+			FurnaceCraftingManager.getInstance().addShapelessRecipe(new ItemStack(antidoteRustUnit, 1, 0),
+					new Object[] {
+							new ItemStack(DCsAppleMilk.princessClam, 1, 0),
+							new ItemStack(item2, 1, 0),
+							new ItemStack(item, 1, 0) });
+		}
 
 		RecipeAPI.timeMachine.add(new ItemStack(iceRustUnit), new ItemStack(iceUnit));
 		RecipeAPI.timeMachine.add(new ItemStack(antidoteRustUnit), new ItemStack(antidoteUnit));

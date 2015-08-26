@@ -37,5 +37,4 @@ public class ItemWoodBowls_JP extends ItemWoodBowls {
 		}
 		return false;
 	}
-
 }

@@ -9,6 +9,8 @@ import defeatedcrow.addonforamt.jpaddon.client.gui.GuiDryingRack;
 import defeatedcrow.addonforamt.jpaddon.client.item.ModelHaori;
 import defeatedcrow.addonforamt.jpaddon.client.item.ModelKimonoTite;
 import defeatedcrow.addonforamt.jpaddon.common.block.ContainerDryingRack;
+import defeatedcrow.addonforamt.jpaddon.common.block.TileAlabasterLamp;
+import defeatedcrow.addonforamt.jpaddon.common.block.TileChandelier;
 import defeatedcrow.addonforamt.jpaddon.common.block.TileDryingRack;
 
 public class CommonProxyAJP implements IGuiHandler {
@@ -34,6 +36,8 @@ public class CommonProxyAJP implements IGuiHandler {
 
 	public void registerTileEntity() {
 		GameRegistry.registerTileEntity(TileDryingRack.class, "amtjp.tile.drying_rack");
+		GameRegistry.registerTileEntity(TileAlabasterLamp.class, "amtjp.tile.lamp_alabaster");
+		GameRegistry.registerTileEntity(TileChandelier.class, "amtjp.tile.chandelier");
 	}
 
 	// GUIの登録

@@ -2,6 +2,7 @@ package defeatedcrow.addonforamt.jpaddon.recipe;
 
 import java.util.ArrayList;
 
+import mods.defeatedcrow.api.appliance.SoupType;
 import mods.defeatedcrow.api.recipe.RecipeRegisterManager;
 import mods.defeatedcrow.common.DCsAppleMilk;
 import mods.defeatedcrow.recipe.BrewingRecipe;
@@ -22,6 +23,7 @@ public class AddMachineRecipe {
 		addTeaRecipe();
 		addBrewRecipe();
 		addPanRecipe();
+		addFondueRecipe();
 		addTeppanRecipe();
 		addEvaporatorRecipe();
 		addDryerRecipe();
@@ -90,6 +92,34 @@ public class AddMachineRecipe {
 				AddonJPCore.woodBowls, 1, 2), new ItemStack(AddonJPCore.woodBowls_jp, 1, 2),
 				"amtjp:textures/items/contents/contents_cornsoup.png", "Corn Soup");
 
+		RecipeRegisterManager.panRecipe.register(new ItemStack(AddonJPCore.minced, 1, 11), new ItemStack(
+				AddonJPCore.jpBowls, 1, 4), new ItemStack(AddonJPCore.jpBowls_jp, 1, 4),
+				"amtjp:textures/items/contents/contents_kanijiru.png", "Crab Miso Soup");
+
+	}
+
+	private static void addFondueRecipe() {
+		RecipeRegisterManager.fondueRecipe.registerSource("foodKatuobushi", SoupType.WATER, SoupType.DASHI);
+		RecipeRegisterManager.fondueRecipe.registerSource(new ItemStack(AddonJPCore.bottle, 1, 48), SoupType.DASHI,
+				SoupType.SHOYU);
+		RecipeRegisterManager.fondueRecipe.registerSource(new ItemStack(AddonJPCore.bottle, 1, 32), SoupType.DASHI,
+				SoupType.SHOYU);
+		RecipeRegisterManager.fondueRecipe.registerSource(new ItemStack(AddonJPCore.bottle, 1, 16), SoupType.DASHI,
+				SoupType.SHOYU);
+		RecipeRegisterManager.fondueRecipe.registerSource(new ItemStack(AddonJPCore.bottle, 1, 0), SoupType.DASHI,
+				SoupType.SHOYU);
+		RecipeRegisterManager.fondueRecipe.registerSource(new ItemStack(Items.bone, 1, 0), SoupType.WATER,
+				SoupType.TONKOTU);
+
+		RecipeRegisterManager.fondueRecipe.register(new ItemStack(Items.bowl), new ItemStack(DCsAppleMilk.baseSoupBowl,
+				1, 3), SoupType.DASHI);
+		RecipeRegisterManager.fondueRecipe.register(new ItemStack(Items.bowl), new ItemStack(DCsAppleMilk.baseSoupBowl,
+				1, 4), SoupType.SHOYU);
+		RecipeRegisterManager.fondueRecipe.register(new ItemStack(Items.bowl), new ItemStack(DCsAppleMilk.baseSoupBowl,
+				1, 5), SoupType.TONKOTU);
+
+		RecipeRegisterManager.fondueRecipe.register(new ItemStack(AddonJPCore.fishes, 1, 3), new ItemStack(
+				AddonJPCore.squareDish, 1, 4), SoupType.WATER);
 	}
 
 	private static void addTeppanRecipe() {
@@ -102,6 +132,9 @@ public class AddMachineRecipe {
 
 		RecipeRegisterManager.plateRecipe.register(new ItemStack(AddonJPCore.materials, 1, 1), new ItemStack(
 				AddonJPCore.squareDish, 1, 1), 120, false);
+
+		RecipeRegisterManager.plateRecipe.register(new ItemStack(AddonJPCore.roastPig, 1, 0), new ItemStack(
+				AddonJPCore.roastPig, 1, 1), 300, false);
 
 		RecipeRegisterManager.plateRecipe.register(new ItemStack(AddonJPCore.dough, 1, 0), new ItemStack(
 				AddonJPCore.jpDish, 1, 6), 120, true);
@@ -140,6 +173,9 @@ public class AddMachineRecipe {
 
 		RecipeManagerJP.dryerRecipe.addRecipe(new ItemStack(AddonJPCore.jpDish, 1, 3), 2, "cropSweetPotato");
 
+		RecipeManagerJP.dryerRecipe.addRecipe(new ItemStack(DCsAppleMilk.gunpowderContainer, 1, 0), 7, new ItemStack(
+				DCsAppleMilk.gunpowderContainer, 1, 2));
+
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.teaLeaves, 1, 2), 2, new ItemStack(
 				DCsAppleMilk.foodTea, 1, 0));
 
@@ -166,6 +202,7 @@ public class AddMachineRecipe {
 				Blocks.melon_block, 1, 0));
 
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.glassDish, 1, 4), 2, "rawSquid");
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.glassDish, 1, 4), 2, "fishSquid");
 	}
 
 	static void addProcessorRecipe() {
@@ -312,6 +349,31 @@ public class AddMachineRecipe {
 				new Object[] {
 						"cropCorn",
 						"bucketMilk" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 11), true, null,
+				new Object[] {
+						"fishCrab",
+						"miso",
+						"bottleSoySause" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.porkchop, 5, 0), true, new ItemStack(
+				Items.bone, 1, 5), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 0) });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.cooked_porkchop, 5, 0), true,
+				new ItemStack(Items.bone, 1, 5), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 1) });
+
+		// jaw crusher
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 0), false, null,
+				new Object[] { "oreSalt" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.materials, 3, 2), false,
+				new ItemStack(AddonJPCore.materials, 1, 9), 0.25F, new Object[] { "gemSalt" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 1), false, null,
+				new Object[] { "oreAlabaster" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.dye, 3, 15), false, null,
+				new Object[] { "gemAlabaster" });
 	}
 
 }

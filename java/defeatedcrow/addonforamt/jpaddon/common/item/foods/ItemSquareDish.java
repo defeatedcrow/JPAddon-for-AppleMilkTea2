@@ -25,7 +25,12 @@ public class ItemSquareDish extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	private IIcon iconType[];
 
-	private static final String[] nameType = new String[] { "ajihiraki_cooked", "kasuzuke_cooked", "tukemono" };
+	private static final String[] nameType = new String[] {
+			"ajihiraki_cooked",
+			"kasuzuke_cooked",
+			"tukemono",
+			"kabayaki",
+			"boiled_kani" };
 
 	public ItemSquareDish() {
 		super(true, false);
@@ -37,7 +42,9 @@ public class ItemSquareDish extends EdibleEntityItem2 {
 	@Override
 	public int[] hungerOnEaten(int meta) {
 		int a = meta == 2 ? 2 : 10;
-		return new int[] { a, 4 };
+		return new int[] {
+				a,
+				4 };
 	}
 
 	@Override

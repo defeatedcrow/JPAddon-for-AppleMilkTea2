@@ -22,5 +22,4 @@ public class EntityJPRice_JP extends EntityJPRice {
 	protected ItemStack returnItem() {
 		return new ItemStack(AddonJPCore.riceBowls_jp, 1, this.getItemMetadata());
 	}
-
 }

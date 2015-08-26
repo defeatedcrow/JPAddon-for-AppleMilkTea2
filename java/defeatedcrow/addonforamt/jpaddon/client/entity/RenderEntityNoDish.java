@@ -1,5 +1,8 @@
 package defeatedcrow.addonforamt.jpaddon.client.entity;
 
+import mods.defeatedcrow.client.entity.base.RenderFoodEntityBase;
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
@@ -9,10 +12,8 @@ import org.lwjgl.opengl.GL12;
 import defeatedcrow.addonforamt.jpaddon.client.model.inner.ModelCheese;
 import defeatedcrow.addonforamt.jpaddon.client.model.inner.ModelMasuzushi;
 import defeatedcrow.addonforamt.jpaddon.client.model.inner.ModelSalad;
-import defeatedcrow.addonforamt.jpaddon.common.entity.EntityFoodBase;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
 
-public class RenderEntityNoDish extends JPRenderEntityBase {
+public class RenderEntityNoDish extends RenderFoodEntityBase {
 
 	protected static final ResourceLocation MASU_TEX = new ResourceLocation("amtjp:textures/entity/foods/masuzushi.png");
 	protected static final ResourceLocation CHEESE_TEX = new ResourceLocation("amtjp:textures/entity/foods/cheese.png");
@@ -23,7 +24,7 @@ public class RenderEntityNoDish extends JPRenderEntityBase {
 	private ModelSalad modelSalad = new ModelSalad();
 
 	@Override
-	protected void renderDeco(EntityFoodBase entity, byte meta, Deco deco, double par2, double par4, double par6,
+	protected void renderDeco(FoodBaseEntity entity, byte meta, Deco deco, double par2, double par4, double par6,
 			float par8, float par9) {
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);

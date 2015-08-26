@@ -37,5 +37,4 @@ public class ItemRiceBowls_JP extends ItemRiceBowls {
 		}
 		return false;
 	}
-
 }

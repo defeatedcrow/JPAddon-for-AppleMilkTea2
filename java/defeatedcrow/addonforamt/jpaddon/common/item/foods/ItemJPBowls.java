@@ -30,7 +30,12 @@ public class ItemJPBowls extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	private IIcon innerType[];
 
-	private static final String[] nameType = new String[] { "cabbagepork", "kentin", "nasusoumen", "simotukare" };
+	private static final String[] nameType = new String[] {
+			"cabbagepork",
+			"kentin",
+			"nasusoumen",
+			"simotukare",
+			"kanijiru" };
 
 	public ItemJPBowls() {
 		super(true, false);
@@ -47,7 +52,9 @@ public class ItemJPBowls extends EdibleEntityItem2 {
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		return new int[] { 4, 6 };
+		return new int[] {
+				4,
+				6 };
 	}
 
 	@Override
@@ -119,5 +126,4 @@ public class ItemJPBowls extends EdibleEntityItem2 {
 		}
 		return ret;
 	}
-
 }

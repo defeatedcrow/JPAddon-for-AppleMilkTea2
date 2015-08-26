@@ -1,14 +1,15 @@
 package defeatedcrow.addonforamt.jpaddon.common.entity;
 
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
+import mods.defeatedcrow.common.base.FoodModelType.Dish;
+import mods.defeatedcrow.common.base.FoodModelType.Soup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Dish;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Soup;
 
-public class EntityNoDish extends EntityFoodBase {
+public class EntityNoDish extends FoodBaseEntity {
 
 	public EntityNoDish(World world) {
 		super(world);
@@ -29,7 +30,7 @@ public class EntityNoDish extends EntityFoodBase {
 
 	@Override
 	public Deco getDecoType() {
-		return Deco.Masuzushi;
+		return Deco.None;
 	}
 
 	@Override

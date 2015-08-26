@@ -13,8 +13,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMaterials extends Item {
 
-	private static String[] name = { "ajihiraki_raw", "kasuzuke_raw", "dust_salt", "leaf_sansyo", "sakekasu",
-			"katubushi", "aona", "mayonnaise", "wild_strawberry" };
+	private static String[] name = {
+			"ajihiraki_raw",
+			"kasuzuke_raw",
+			"dust_salt",
+			"leaf_sansyo",
+			"sakekasu",
+			"katubushi",
+			"aona",
+			"mayonnaise",
+			"wild_strawberry",
+			"kansui" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconItemType[];

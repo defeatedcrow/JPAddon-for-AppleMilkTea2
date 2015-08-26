@@ -120,5 +120,4 @@ public class ItemGlassBowls extends EdibleEntityItem2 {
 		}
 		return super.onEaten(itemStack, world, player);
 	}
-
 }

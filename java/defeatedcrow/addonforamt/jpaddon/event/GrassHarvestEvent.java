@@ -10,7 +10,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.plugin.AJPCleaverPlugin;
+import defeatedcrow.addonforamt.jpaddon.plugin.cleaver.AJPCleaverPlugin;
 
 public class GrassHarvestEvent {
 
@@ -37,10 +37,10 @@ public class GrassHarvestEvent {
 				}
 
 				if (flag) {
-					if ((chance & 4) == 0) {
+					if ((chance & 4) == 4) {
 						event.drops.add(new ItemStack(AddonJPCore.materials, 1, 6));
 					}
-					if ((chance & 3) == 0) {
+					if ((chance & 3) == 1) {
 						event.drops.add(new ItemStack(AddonJPCore.materials, 1, 3));
 					}
 					if ((chance & 11) == 0) {
@@ -50,7 +50,6 @@ public class GrassHarvestEvent {
 				}
 			}
 		}
-
 	}
 
 }

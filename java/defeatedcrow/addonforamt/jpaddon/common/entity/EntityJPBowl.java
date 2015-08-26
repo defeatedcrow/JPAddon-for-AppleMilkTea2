@@ -1,14 +1,15 @@
 package defeatedcrow.addonforamt.jpaddon.common.entity;
 
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
+import mods.defeatedcrow.common.base.FoodModelType.Dish;
+import mods.defeatedcrow.common.base.FoodModelType.Soup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Dish;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Soup;
 
-public class EntityJPBowl extends EntityFoodBase {
+public class EntityJPBowl extends FoodBaseEntity {
 
 	public EntityJPBowl(World world) {
 		super(world);

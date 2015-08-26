@@ -1,16 +1,11 @@
 package defeatedcrow.addonforamt.jpaddon.client.entity;
 
-import net.minecraft.entity.Entity;
+import mods.defeatedcrow.client.entity.base.RenderFoodEntityBase;
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import defeatedcrow.addonforamt.jpaddon.client.model.inner.ModelKobati;
-import defeatedcrow.addonforamt.jpaddon.common.entity.EntityFoodBase;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
-
-public class RenderEntityGlassDish extends JPRenderEntityBase {
+public class RenderEntityGlassDish extends RenderFoodEntityBase {
 
 	protected static final ResourceLocation NAMASU_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/k_namasu.png");
@@ -27,49 +22,27 @@ public class RenderEntityGlassDish extends JPRenderEntityBase {
 	protected static final ResourceLocation POTESARA_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/k_potesara.png");
 
-	private ModelKobati model = new ModelKobati();
-
 	@Override
-	protected void renderDeco(EntityFoodBase entity, byte meta, Deco deco, double par2, double par4, double par6,
-			float par8, float par9) {
-		GL11.glPushMatrix();
-		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glTranslatef((float) par2, (float) par4 + 1.3F, (float) par6);
-		GL11.glScalef(1.0F, -1.0F, -1.0F);
-		GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
+	protected ResourceLocation getDecoTexture(FoodBaseEntity entity, byte meta, Deco deco) {
 
 		switch (meta) {
 		case 0:
-			this.bindTexture(NAMASU_TEX);
-			break;
+			return NAMASU_TEX;
 		case 1:
-			this.bindTexture(TAKENOKO_TEX);
-			break;
+			return TAKENOKO_TEX;
 		case 2:
-			this.bindTexture(SIGURENI_TEX);
-			break;
+			return SIGURENI_TEX;
 		case 3:
-			this.bindTexture(OKAKAAE_TEX);
-			break;
+			return OKAKAAE_TEX;
 		case 4:
-			this.bindTexture(SIOKARA_TEX);
-			break;
+			return SIOKARA_TEX;
 		case 5:
-			this.bindTexture(NAMEROU_TEX);
-			break;
+			return NAMEROU_TEX;
 		case 6:
-			this.bindTexture(POTESARA_TEX);
-			break;
+			return POTESARA_TEX;
 		default:
-			this.bindTexture(NAMASU_TEX);
+			return NAMASU_TEX;
 		}
-
-		model.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-		GL11.glPopMatrix();
-
 	}
 
 }

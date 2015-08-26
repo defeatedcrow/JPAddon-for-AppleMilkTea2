@@ -27,7 +27,12 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	private IIcon innerType[];
 
-	private static final String[] nameType = new String[] { "nasutomato", "onionsoup", "cornsoup" };
+	private static final String[] nameType = new String[] {
+			"nasutomato",
+			"onionsoup",
+			"cornsoup",
+			"ramen_tonkotu",
+			"ramen_shoyu" };
 
 	public ItemWoodBowls() {
 		super(true, false);
@@ -44,7 +49,9 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		return new int[] { 5, 4 };
+		return new int[] {
+				5,
+				4 };
 	}
 
 	@Override
@@ -106,5 +113,4 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 		}
 		return super.onEaten(par1ItemStack, par2World, par3EntityPlayer);
 	}
-
 }

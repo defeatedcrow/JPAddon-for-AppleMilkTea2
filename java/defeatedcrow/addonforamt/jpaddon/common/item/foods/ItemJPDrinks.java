@@ -178,5 +178,4 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 			}
 		}
 	}
-
 }

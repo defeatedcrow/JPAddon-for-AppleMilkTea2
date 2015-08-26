@@ -7,6 +7,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import defeatedcrow.addonforamt.jpaddon.AJPLogger;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
+import defeatedcrow.addonforamt.jpaddon.plugin.cleaver.AJPCleaverPlugin;
 import defeatedcrow.addonforamt.jpaddon.plugin.ss2.AJPSS2Plugin;
 
 public class PluginHandler {
@@ -21,6 +22,11 @@ public class PluginHandler {
 	public static boolean ir2 = false;
 	public static boolean mce = false;
 	public static boolean fluidity = false;
+	public static boolean cleaver = false;
+
+	public static void loadPre() {
+
+	}
 
 	public static void loadInit() {
 
@@ -34,9 +40,28 @@ public class PluginHandler {
 			}
 		}
 
+		if (Loader.isModLoaded("Schr0sCleaver")) {
+			cleaver = true;
+			try {
+				AJPCleaverPlugin.load();
+			} catch (Exception e) {
+				AJPLogger.failLoadingModInfo("Schr0sCleaver");
+				e.printStackTrace(System.err);
+			}
+		}
 	}
 
 	public static void loadPost() {
+
+		if (Loader.isModLoaded("SextiarySector")) {
+			ss2 = true;
+			try {
+				AJPSS2Plugin.load();
+			} catch (Exception e) {
+				AJPLogger.failLoadingModInfo("SextiarySector");
+				e.printStackTrace(System.err);
+			}
+		}
 
 		if (Loader.isModLoaded("BambooMod")) {
 			bamboo = true;
@@ -74,16 +99,6 @@ public class PluginHandler {
 				AJPTofuPlugin.load();
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("TofuCraft");
-				e.printStackTrace(System.err);
-			}
-		}
-
-		if (Loader.isModLoaded("SextiarySector")) {
-			ss2 = true;
-			try {
-				AJPSS2Plugin.load();
-			} catch (Exception e) {
-				AJPLogger.failLoadingModInfo("SextiarySector");
 				e.printStackTrace(System.err);
 			}
 		}
@@ -145,6 +160,10 @@ public class PluginHandler {
 					"XXX",
 					'X',
 					new ItemStack(Items.string, 1, 0) }));
+		}
+
+		if (!ss2 && fluidity) {
+			AJPFluidityPlugin.loadAlt();
 		}
 	}
 

@@ -1,25 +1,25 @@
 package defeatedcrow.addonforamt.jpaddon.common.entity;
 
-import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Deco;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Dish;
-import defeatedcrow.addonforamt.jpaddon.common.entity.FoodType.Soup;
+import mods.defeatedcrow.common.base.FoodBaseEntity;
+import mods.defeatedcrow.common.base.FoodModelType.Deco;
+import mods.defeatedcrow.common.base.FoodModelType.Dish;
+import mods.defeatedcrow.common.base.FoodModelType.Soup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 
-public class EntityJPDish extends EntityFoodBase {
+public class EntityJPDish extends FoodBaseEntity {
 
-	public EntityJPDish(World world){
-    	super(world);
-    }
+	public EntityJPDish(World world) {
+		super(world);
+	}
 
 	public EntityJPDish(World world, ItemStack item) {
 		super(world, item);
 	}
 
-	public EntityJPDish(World world, ItemStack item,
-			double x, double y, double z) {
+	public EntityJPDish(World world, ItemStack item, double x, double y, double z) {
 		super(world, item, x, y, z);
 	}
 

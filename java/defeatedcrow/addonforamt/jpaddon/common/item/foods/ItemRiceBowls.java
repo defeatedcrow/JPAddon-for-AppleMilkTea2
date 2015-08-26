@@ -30,7 +30,8 @@ public class ItemRiceBowls extends EdibleEntityItem2 {
 	private static final String[] nameType = new String[] {
 			"hamagurimesi",
 			"kuriokowa",
-			"mayomesi" };
+			"mayomesi",
+			"unajuu" };
 
 	public ItemRiceBowls() {
 		super(true, false);
@@ -103,4 +104,5 @@ public class ItemRiceBowls extends EdibleEntityItem2 {
 		}
 		return false;
 	}
+
 }
