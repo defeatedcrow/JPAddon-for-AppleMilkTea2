@@ -51,7 +51,7 @@ public class RenderEntityJPBowl extends RenderFoodEntityBase {
 					AddonJPCore.squareDish, 1, 4));
 			entityitem.getEntityItem().stackSize = 1;
 			entityitem.hoverStart = 0.0F;
-			RenderItem.renderInFrame = false;
+			RenderItem.renderInFrame = true;
 			RenderManager.instance.renderEntityWithPosYaw(entityitem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 			RenderItem.renderInFrame = false;
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);

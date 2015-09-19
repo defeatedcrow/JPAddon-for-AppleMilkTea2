@@ -3,10 +3,12 @@ package defeatedcrow.addonforamt.jpaddon.client.entity;
 import mods.defeatedcrow.client.entity.base.RenderFoodEntityBase;
 import mods.defeatedcrow.common.base.FoodBaseEntity;
 import mods.defeatedcrow.common.base.FoodModelType.Deco;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -63,6 +65,15 @@ public class RenderEntitySquareDish extends RenderFoodEntityBase {
 		}
 
 		if (meta == 4) {
+
+			float adjY = 0.0F;
+			if (!AddonJPCore.proxy.vanillaFancyRenderMode()) {
+				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+				if (player != null) {
+					adjY = 360 - player.cameraYaw;
+				}
+			}
+
 			GL11.glTranslatef(0.0F, 1.5F, -0.35F);
 			GL11.glRotatef(100.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glScalef(1.5F, 1.5F, 1.5F);
@@ -71,7 +82,7 @@ public class RenderEntitySquareDish extends RenderFoodEntityBase {
 					AddonJPCore.squareDish, 1, 4));
 			entityitem.getEntityItem().stackSize = 1;
 			entityitem.hoverStart = 0.0F;
-			RenderItem.renderInFrame = false;
+			RenderItem.renderInFrame = true;
 			RenderManager.instance.renderEntityWithPosYaw(entityitem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 			RenderItem.renderInFrame = false;
 		}

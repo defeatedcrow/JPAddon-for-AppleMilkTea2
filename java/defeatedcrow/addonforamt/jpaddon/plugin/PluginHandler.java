@@ -34,6 +34,7 @@ public class PluginHandler {
 			fluidity = true;
 			try {
 				AJPFluidityPlugin.load();
+				AJPFluidityPlugin.loadAlt();
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("FluidityDC");
 				e.printStackTrace(System.err);
@@ -160,10 +161,6 @@ public class PluginHandler {
 					"XXX",
 					'X',
 					new ItemStack(Items.string, 1, 0) }));
-		}
-
-		if (!ss2 && fluidity) {
-			AJPFluidityPlugin.loadAlt();
 		}
 	}
 

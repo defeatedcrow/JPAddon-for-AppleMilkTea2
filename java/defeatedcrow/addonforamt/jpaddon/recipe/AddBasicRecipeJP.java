@@ -367,13 +367,13 @@ public class AddBasicRecipeJP {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {
 				"toolGrater",
-				"cropWheat",
+				Items.wheat,
 				"dustSalt",
 				"bucketWater" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 1), new Object[] {
 				"toolGrater",
-				"cropWheat",
+				Items.wheat,
 				"dustSalt",
 				"bucketWater",
 				"foodKansui" }));

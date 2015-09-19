@@ -1,5 +1,6 @@
 package defeatedcrow.addonforamt.jpaddon.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -130,6 +131,11 @@ public class ClientProxyAJP extends CommonProxyAJP {
 				e.printStackTrace(System.err);
 			}
 		}
+	}
+
+	@Override
+	public boolean vanillaFancyRenderMode() {
+		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
 
 }

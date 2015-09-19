@@ -173,6 +173,8 @@ public class AddMachineRecipe {
 
 		RecipeManagerJP.dryerRecipe.addRecipe(new ItemStack(AddonJPCore.jpDish, 1, 3), 2, "cropSweetPotato");
 
+		RecipeManagerJP.dryerRecipe.addRecipe(new ItemStack(Items.blaze_powder, 1, 0), 4, Items.lava_bucket);
+
 		RecipeManagerJP.dryerRecipe.addRecipe(new ItemStack(DCsAppleMilk.gunpowderContainer, 1, 0), 7, new ItemStack(
 				DCsAppleMilk.gunpowderContainer, 1, 2));
 
@@ -203,6 +205,17 @@ public class AddMachineRecipe {
 
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.glassDish, 1, 4), 2, "rawSquid");
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.glassDish, 1, 4), 2, "fishSquid");
+
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(Items.fermented_spider_eye, 1, 0), 1, new ItemStack(
+				Items.spider_eye, 1, 0));
+
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, "cropApple");
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
+				Blocks.double_plant, 1, 1));
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
+				Blocks.double_plant, 1, 4));
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
+				Blocks.double_plant, 1, 5));
 	}
 
 	static void addProcessorRecipe() {

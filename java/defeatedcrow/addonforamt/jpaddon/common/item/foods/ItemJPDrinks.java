@@ -15,7 +15,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -152,30 +151,31 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 		return ret;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	// マウスオーバー時の表示情報
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-		int l = par1ItemStack.getItemDamage();
-		ArrayList<PotionEffect> effect = this.effectOnEaten(par2EntityPlayer, l);
-		if (effect != null && this.showTooltip) {
-			for (PotionEffect p : effect) {
-				String s = StatCollector.translateToLocal(p.getEffectName()).trim();
-				if (p.getAmplifier() > 0) {
-					if (p.getAmplifier() < 4) {
-						s = s + " " + StatCollector.translateToLocal("potion.potency." + p.getAmplifier()).trim();
-					} else {
-						s = s + " " + p.getAmplifier();
-					}
-				}
-
-				if (p.getDuration() > 20) {
-					s = s + " (" + Potion.getDurationString(p) + ")";
-				}
-
-				par3List.add(s);
-			}
-		}
-	}
+	// @Override
+	// @SideOnly(Side.CLIENT)
+	// // マウスオーバー時の表示情報
+	// public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List
+	// par3List, boolean par4) {
+	// super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
+	// int l = par1ItemStack.getItemDamage();
+	// ArrayList<PotionEffect> effect = this.effectOnEaten(par2EntityPlayer, l);
+	// if (effect != null && this.showTooltip) {
+	// for (PotionEffect p : effect) {
+	// String s = StatCollector.translateToLocal(p.getEffectName()).trim();
+	// if (p.getAmplifier() > 0) {
+	// if (p.getAmplifier() < 4) {
+	// s = s + " " + StatCollector.translateToLocal("potion.potency." + p.getAmplifier()).trim();
+	// } else {
+	// s = s + " " + p.getAmplifier();
+	// }
+	// }
+	//
+	// if (p.getDuration() > 20) {
+	// s = s + " (" + Potion.getDurationString(p) + ")";
+	// }
+	//
+	// par3List.add(s);
+	// }
+	// }
+	// }
 }

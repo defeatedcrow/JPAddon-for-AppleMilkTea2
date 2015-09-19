@@ -53,11 +53,18 @@ public class AJPSS2Plugin {
 	}
 
 	static void addBasicRecipe() {
-		Item item = Util.getModItem("SextiarySector", "Hammer");
+		Item item = Util.getModItem("SextiarySector", "Hammar");
 		if (item != null) {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.samue, 1, 0), new Object[] {
 					new ItemStack(AddonJPCore.basicHaori[0], 1, 0),
 					new ItemStack(item, 1, 0) }));
+		}
+
+		Item item2 = Util.getModItem("SextiarySector", "IronSpanner");
+		if (item2 != null) {
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.samue, 1, 0), new Object[] {
+					new ItemStack(AddonJPCore.basicHaori[0], 1, 0),
+					new ItemStack(item2, 1, 0) }));
 		}
 
 	}

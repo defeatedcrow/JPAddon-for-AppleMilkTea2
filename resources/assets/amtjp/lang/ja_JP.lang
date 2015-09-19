@@ -125,9 +125,9 @@ item.addonamtjp.kimono_take.name=着物(竹林)
 item.addonamtjp.kimono_sea.name=着物(波)
 item.addonamtjp.kimono_momiji.name=着物(紅葉)
 
-item.addonamtjp.ice_unit.name=フローズントレーサーユニット
+item.addonamtjp.ice_unit.name=ユニット「フローズントレーサー」
 item.addonamtjp.ice_rust_unit.name=凍り付いた錆びユニット
-item.addonamtjp.antidote_unit.name=アンチドーテユニット
+item.addonamtjp.antidote_unit.name=ユニット「アンチドーテ」
 item.addonamtjp.antidote_rust_unit.name=滴る錆びユニット
 
 item.addonamtjp.cleaver_wind.name=風裂き包丁

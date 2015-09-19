@@ -1,5 +1,6 @@
 package defeatedcrow.addonforamt.jpaddon.plugin;
 
+import jp.plusplus.ir2.IR2;
 import jp.plusplus.ir2.Recipes;
 import jp.plusplus.ir2.items.ItemCore;
 import mods.defeatedcrow.common.DCsAppleMilk;
@@ -17,6 +18,10 @@ public class AJPIR2Plugin {
 	public static void load() {
 		addBasicRecipe();
 		addMachineRecipe();
+
+		if (IR2.VERSION.contains("3.0.")) {
+			AJPIR3Plugin.load();
+		}
 	}
 
 	static void addBasicRecipe() {

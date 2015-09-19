@@ -59,9 +59,9 @@ public class OreRegisterJP {
 
 		// leaves
 		OreDictionary.registerOre("foodSakuraTea", new ItemStack(AddonJPCore.teaLeaves, 1, 0));
-		OreDictionary.registerOre("foodRoastedBarley", new ItemStack(AddonJPCore.teaLeaves, 1, 0));
-		OreDictionary.registerOre("foodOolongTea", new ItemStack(AddonJPCore.teaLeaves, 1, 0));
-		OreDictionary.registerOre("foodVanillaCoffee", new ItemStack(AddonJPCore.teaLeaves, 1, 0));
+		OreDictionary.registerOre("foodRoastedBarley", new ItemStack(AddonJPCore.teaLeaves, 1, 1));
+		OreDictionary.registerOre("foodOolongTea", new ItemStack(AddonJPCore.teaLeaves, 1, 2));
+		OreDictionary.registerOre("foodVanillaCoffee", new ItemStack(AddonJPCore.teaLeaves, 1, 3));
 
 		// foods
 		OreDictionary.registerOre("foodCheese", new ItemStack(AddonJPCore.noDish, 1, 1));

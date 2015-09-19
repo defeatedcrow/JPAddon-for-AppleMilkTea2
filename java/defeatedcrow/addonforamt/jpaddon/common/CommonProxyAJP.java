@@ -78,4 +78,8 @@ public class CommonProxyAJP implements IGuiHandler {
 	public void loadNEI() {
 	}
 
+	public boolean vanillaFancyRenderMode() {
+		return false;
+	}
+
 }
