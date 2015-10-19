@@ -23,7 +23,7 @@ public class AJPBambooPlugin {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.teaLeaves, 1, 0), new Object[] {
 				"toolGrater",
 				new ItemStack(DCsAppleMilk.foodTea, 1, 0),
-				new ItemStack(BambooInit.sakura, 1, 32767) }));
+				new ItemStack(BambooInit.sakuraleavs, 1, 32767) }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 8), new Object[] {
 				"toolGrater",
@@ -68,7 +68,7 @@ public class AJPBambooPlugin {
 	static void addMachineRecipe() {
 		// amt
 		RecipeRegisterManager.teaRecipe.register(new ItemStack(BambooInit.bean), new ItemStack(AddonJPCore.jpDrinks, 1,
-				5), "amtjp:textures/item/contents/contents_siruko");
+				5), "amtjp:textures/items/contents/contents_sakura.png");
 		// bamboo
 	}
 

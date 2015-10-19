@@ -14,7 +14,7 @@
     "name":"AddonforAMT-JP",
     "url":"http://defeatedcrow.wiki.fc2.com/wiki/JapaneseAddonForAppleMilkTea2",
     "updateUrl":"",
-    "version":"1.7.10_1.2c",
+    "version":"1.7.10_1.2d",
     "requiredMods":[
       "Minecraft Forge1.7.10 10.13.0.1291+, AppleMilkTea2_2.8e+"
     ]

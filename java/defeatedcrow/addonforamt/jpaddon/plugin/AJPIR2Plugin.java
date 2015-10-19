@@ -45,8 +45,8 @@ public class AJPIR2Plugin {
 		Recipes.addWeaving(new ItemStack(AddonJPCore.linenBall, 1, 2), new ItemStack(AddonJPCore.linenCloth, 1, 0));
 		Recipes.addWeaving(new ItemStack(AddonJPCore.linenBall, 1, 3), new ItemStack(AddonJPCore.linenCloth, 1, 1));
 
-		Recipes.addFishingSea(new ItemStack(DCsAppleMilk.princessClam, 1, 0), 125);
-		Recipes.addFishingSea(new ItemStack(DCsAppleMilk.fossilScale, 1, 0), 125);
+		Recipes.addFishingSea(new ItemStack(DCsAppleMilk.princessClam, 1, 0), 5);
+		Recipes.addFishingSea(new ItemStack(DCsAppleMilk.fossilScale, 1, 0), 5);
 
 	}
 

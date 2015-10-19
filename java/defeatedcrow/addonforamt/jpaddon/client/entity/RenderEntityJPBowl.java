@@ -31,7 +31,7 @@ public class RenderEntityJPBowl extends RenderFoodEntityBase {
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			this.bindTexture(NASU_TEX);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glTranslatef((float) par2, (float) par4 + 1.3F, (float) par6);
+			GL11.glTranslatef((float) par2, (float) par4 + 1.2F, (float) par6);
 			GL11.glScalef(1.0F, -1.0F, -1.0F);
 			GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
 			model.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
@@ -42,7 +42,7 @@ public class RenderEntityJPBowl extends RenderFoodEntityBase {
 		if (meta == 4) {
 			GL11.glPushMatrix();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			GL11.glTranslatef((float) par2, (float) par4 - 0.1F, (float) par6);
+			GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 			GL11.glScalef(0.85F, -0.85F, -0.85F);
 			GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(145, 1.0F, 0.0F, 0.0F);

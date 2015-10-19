@@ -39,7 +39,7 @@ public class RenderEntityRiceBowl extends RenderFoodEntityBase {
 
 		if (meta < 2) {
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glTranslatef((float) par2, (float) par4 + 1.35F, (float) par6);
+			GL11.glTranslatef((float) par2, (float) par4 + 1.25F, (float) par6);
 			GL11.glScalef(0.9F, -1.0F, -0.9F);
 			GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
 

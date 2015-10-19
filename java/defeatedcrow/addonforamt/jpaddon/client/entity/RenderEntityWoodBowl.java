@@ -26,7 +26,7 @@ public class RenderEntityWoodBowl extends RenderFoodEntityBase {
 
 			this.bindTexture(NASU_TEX);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glTranslatef((float) par2, (float) par4 + 1.3F, (float) par6);
+			GL11.glTranslatef((float) par2, (float) par4 + 1.15F, (float) par6);
 			GL11.glScalef(1.0F, -1.0F, -1.0F);
 			GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
 

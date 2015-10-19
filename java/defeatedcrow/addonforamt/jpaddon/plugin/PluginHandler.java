@@ -1,7 +1,10 @@
 package defeatedcrow.addonforamt.jpaddon.plugin;
 
+import java.util.List;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -154,7 +157,10 @@ public class PluginHandler {
 					"XX",
 					'X',
 					new ItemStack(AddonJPCore.linenBall, 1, 3) }));
+		}
 
+		List<ItemStack> cotton = OreDictionary.getOres("cropCotton");
+		if (cotton == null || cotton.isEmpty()) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(AddonJPCore.linenBall, 1, 3), new Object[] {
 					"XXX",
 					"X X",

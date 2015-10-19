@@ -554,6 +554,9 @@ public class AddBasicRecipeJP {
 	}
 
 	static void addSmelting() {
+		GameRegistry.addSmelting(new ItemStack(AddonJPCore.gemBlocks, 1, 1), new ItemStack(
+				Blocks.stained_hardened_clay, 1, 0), 0.3F);
+
 		GameRegistry.addSmelting(new ItemStack(AddonJPCore.materials, 1, 0),
 				new ItemStack(AddonJPCore.squareDish, 1, 0), 0.3F);
 

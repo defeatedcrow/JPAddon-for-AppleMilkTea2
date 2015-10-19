@@ -71,6 +71,7 @@ public class AJPMaplePlugin {
 
 		if (surume != null) {
 			RecipeManagerJP.dryerRecipe.addRecipe(surume.copy(), 1, "rawSquid");
+			RecipeManagerJP.dryerRecipe.addRecipe(surume.copy(), 1, "fishSquid");
 		}
 
 		if (maple_leaves != null) {
@@ -81,7 +82,7 @@ public class AJPMaplePlugin {
 
 		if (azuki != null) {
 			RecipeRegisterManager.teaRecipe.register(azuki.copy(), new ItemStack(AddonJPCore.jpDrinks, 1, 5),
-					"amtjp:textures/item/contents/contents_siruko");
+					"amtjp:textures/items/contents/contents_siruko.png");
 		}
 
 	}

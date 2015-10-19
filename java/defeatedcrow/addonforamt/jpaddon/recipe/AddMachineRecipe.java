@@ -370,10 +370,10 @@ public class AddMachineRecipe {
 						"bottleSoySause" });
 
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.porkchop, 5, 0), true, new ItemStack(
-				Items.bone, 1, 5), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 0) });
+				Items.bone, 5, 0), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 0) });
 
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.cooked_porkchop, 5, 0), true,
-				new ItemStack(Items.bone, 1, 5), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 1) });
+				new ItemStack(Items.bone, 5, 0), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 1) });
 
 		// jaw crusher
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 0), false, null,

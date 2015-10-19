@@ -49,7 +49,9 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		return new int[] {
+		return meta > 2 ? new int[] {
+				12,
+				8 } : new int[] {
 				5,
 				4 };
 	}
@@ -107,10 +109,13 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+	public ItemStack onEaten(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer) {
 		if (!par2World.isRemote) {
 			this.addSSMoisture(6, 4F, par3EntityPlayer);
+			if (stack.getItemDamage() > 3) {
+				this.addSSStamina(40, 4F, par3EntityPlayer);
+			}
 		}
-		return super.onEaten(par1ItemStack, par2World, par3EntityPlayer);
+		return super.onEaten(stack, par2World, par3EntityPlayer);
 	}
 }

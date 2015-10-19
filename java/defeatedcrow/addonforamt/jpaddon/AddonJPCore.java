@@ -50,10 +50,15 @@ import defeatedcrow.addonforamt.jpaddon.recipe.OreRegisterJP;
 import defeatedcrow.addonforamt.jpaddon.world.AddFishingHooks;
 import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
 
-@Mod(modid = "AMTAddonJP", name = "AddonforAMT-JP", version = "1.7.10_1.2c", dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk@[1.7.10_2.8e,);after:FluidityDC")
+@Mod(
+		modid = "AMTAddonJP",
+		name = "AddonforAMT-JP",
+		version = "1.7.10_1.2d",
+		dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk@[1.7.10_2.8e,);after:FluidityDC")
 public class AddonJPCore {
 
-	@SidedProxy(clientSide = "defeatedcrow.addonforamt.jpaddon.client.ClientProxyAJP", serverSide = "defeatedcrow.addonforamt.jpaddon.common.CommonProxyAJP")
+	@SidedProxy(clientSide = "defeatedcrow.addonforamt.jpaddon.client.ClientProxyAJP",
+			serverSide = "defeatedcrow.addonforamt.jpaddon.common.CommonProxyAJP")
 	public static CommonProxyAJP proxy;
 
 	@Instance("AMTAddonJP")
@@ -274,7 +279,7 @@ public class AddonJPCore {
 	}
 
 	public String getRivision() {
-		return "c";
+		return "d";
 	}
 
 	public String getModName() {
