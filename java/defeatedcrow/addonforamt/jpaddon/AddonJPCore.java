@@ -53,7 +53,7 @@ import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
 @Mod(
 		modid = "AMTAddonJP",
 		name = "AddonforAMT-JP",
-		version = "1.7.10_1.2d",
+		version = "1.7.10_1.2e",
 		dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk@[1.7.10_2.8e,);after:FluidityDC")
 public class AddonJPCore {
 
@@ -279,7 +279,7 @@ public class AddonJPCore {
 	}
 
 	public String getRivision() {
-		return "d";
+		return "e";
 	}
 
 	public String getModName() {
