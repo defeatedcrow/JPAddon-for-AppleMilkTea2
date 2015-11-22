@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.registry.GameRegistry;
 import defeatedcrow.addonforamt.jpaddon.AJPLogger;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
@@ -34,10 +35,10 @@ public class PluginHandler {
 	public static void loadInit() {
 
 		if (Loader.isModLoaded("FluidityDC")) {
-			fluidity = true;
 			try {
 				AJPFluidityPlugin.load();
 				AJPFluidityPlugin.loadAlt();
+				fluidity = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("FluidityDC");
 				e.printStackTrace(System.err);
@@ -45,12 +46,16 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("Schr0sCleaver")) {
-			cleaver = true;
-			try {
-				AJPCleaverPlugin.load();
-			} catch (Exception e) {
-				AJPLogger.failLoadingModInfo("Schr0sCleaver");
-				e.printStackTrace(System.err);
+			ModContainer mod = Loader.instance().getIndexedModList().get("Schr0sCleaver");
+			String s = mod.getVersion();
+			if (s.contains("ver2")) {
+				try {
+					AJPCleaverPlugin.load();
+					cleaver = true;
+				} catch (Exception e) {
+					AJPLogger.failLoadingModInfo("Schr0sCleaver");
+					e.printStackTrace(System.err);
+				}
 			}
 		}
 	}
@@ -58,9 +63,9 @@ public class PluginHandler {
 	public static void loadPost() {
 
 		if (Loader.isModLoaded("SextiarySector")) {
-			ss2 = true;
 			try {
 				AJPSS2Plugin.load();
+				ss2 = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("SextiarySector");
 				e.printStackTrace(System.err);
@@ -68,9 +73,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("BambooMod")) {
-			bamboo = true;
 			try {
 				AJPBambooPlugin.load();
+				bamboo = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("BambooMod");
 				e.printStackTrace(System.err);
@@ -78,9 +83,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("mod_ecru_MapleTree")) {
-			maple = true;
 			try {
 				AJPMaplePlugin.load();
+				maple = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("mod_ecru_MapleTree");
 				e.printStackTrace(System.err);
@@ -88,9 +93,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("Wa")) {
-			wa = true;
 			try {
 				AJPWaPlugin.load();
+				wa = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("Wa");
 				e.printStackTrace(System.err);
@@ -98,9 +103,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("TofuCraft")) {
-			tofu = true;
 			try {
 				AJPTofuPlugin.load();
+				tofu = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("TofuCraft");
 				e.printStackTrace(System.err);
@@ -108,9 +113,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("jp-plusplus-ir2")) {
-			ir2 = true;
 			try {
 				AJPIR2Plugin.load();
+				ir2 = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("jp-plusplus-ir2");
 				e.printStackTrace(System.err);
@@ -118,9 +123,9 @@ public class PluginHandler {
 		}
 
 		if (Loader.isModLoaded("mceconomy2")) {
-			mce = true;
 			try {
 				AJPMCEPlugin.load();
+				mce = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("mceconomy2");
 				e.printStackTrace(System.err);

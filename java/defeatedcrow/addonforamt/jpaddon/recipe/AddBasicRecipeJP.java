@@ -221,6 +221,13 @@ public class AddBasicRecipeJP {
 				"redbeans",
 				"bucketMilk" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.dough, 3, 1), new Object[] {
+				"toolGrater",
+				new ItemStack(Items.wheat, 1, 0),
+				new ItemStack(DCsAppleMilk.foodTea, 1, 0),
+				"AzukiBeans",
+				"bucketMilk" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.dough, 3, 2), new Object[] {
 				"toolGrater",
 				"foodSugar",
@@ -232,6 +239,11 @@ public class AddBasicRecipeJP {
 				"toolGrater",
 				new ItemStack(Items.porkchop, 1, 0),
 				"cabbage" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 0), new Object[] {
+				"toolGrater",
+				new ItemStack(Items.porkchop, 1, 0),
+				"cropCabbage" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 1), new Object[] {
 				"toolGrater",
@@ -358,11 +370,11 @@ public class AddBasicRecipeJP {
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {
 				"toolGrater",
-				"foodDough" }));
+				"dough" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 1), new Object[] {
 				"toolGrater",
-				"foodDough",
+				"dough",
 				"foodKansui" }));
 
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {

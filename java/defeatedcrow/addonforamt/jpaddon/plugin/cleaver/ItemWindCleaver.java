@@ -1,109 +1,69 @@
 package defeatedcrow.addonforamt.jpaddon.plugin.cleaver;
 
+import java.util.Iterator;
+
 import mods.defeatedcrow.common.DCsAppleMilk;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import defeatedcrow.addonforamt.jpaddon.AJPLogger;
 import defeatedcrow.addonforamt.jpaddon.common.entity.WindProjectile;
 
-public class ItemWindCleaver extends ItemSword {
-
-	private final float damage;
+public class ItemWindCleaver extends DCsCleaverBase {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconType[];
 
 	public ItemWindCleaver() {
-		super(DCsAppleMilk.enumToolMaterialChalcedony);
+		super(DCsAppleMilk.enumToolMaterialChalcedony, 10.0F);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(512);
-		this.damage = 10.0F;
 		this.setTextureName("amtjp:tools/cleaver_wind");
-	}
-
-	@Override
-	public Multimap getItemAttributeModifiers() {
-		Multimap multimap = HashMultimap.create();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(
-				field_111210_e, "Weapon modifier", this.damage, 0));
-		return multimap;
-	}
-
-	@Override
-	public float func_150931_i() {
-		return this.damage;
-	}
-
-	@Override
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		return par1ItemStack;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-		return 6000;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.block;
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if (player != null && player.isSneaking()) {
-			NBTTagCompound nbt = stack.getTagCompound();
-			if (nbt == null) {
-				nbt = new NBTTagCompound();
+			// mode変更処理
+			CleaverMode mode = getMode(stack);
+			if (mode == CleaverMode.REVERSAL) {
+				setMode(stack, CleaverMode.NORMAL);
+			} else if (mode == CleaverMode.NORMAL) {
+				setMode(stack, CleaverMode.REVERSAL);
 			}
-			boolean rev = false;
-			if (nbt.hasKey("Reverse")) {
-				rev = nbt.getBoolean("Reverse");
-			}
-
-			boolean ret = !rev;
-			nbt.setBoolean("Reverse", ret);
-			stack.setTagCompound(nbt);
-			return stack;
+			player.worldObj.playSoundAtEntity(player, "random.pop", 1.0F, 1.0F);
 		}
-		player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-		return stack;
+
+		player.setItemInUse(stack, getMaxItemUseDuration(stack));
+		return super.onItemRightClick(stack, world, player);
 	}
 
 	// タメ解放
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int i) {
 		if (player != null && stack != null && !player.worldObj.isRemote) {
-			NBTTagCompound nbt = stack.getTagCompound();
-			if (nbt == null) {
-				nbt = new NBTTagCompound();
-			}
-			boolean isReversal = false;
-			if (nbt.hasKey("Reverse")) {
-				isReversal = nbt.getBoolean("Reverse");
-			}
-			if (!isReversal)
+			CleaverMode mode = getMode(stack);
+			if (mode != CleaverMode.REVERSAL)
 				return;
 
 			int j = this.getMaxItemUseDuration(stack) - i;
 			int exp = player.experienceTotal;
-			if (!player.capabilities.isCreativeMode && !this.reduceExp(player, 5)) {
+			int sharp = EnchantmentHelper.getEnchantmentLevel(Enchantment.sharpness.effectId, stack);
+			int holy = EnchantmentHelper.getEnchantmentLevel(Enchantment.smite.effectId, stack);
+			int arthro = EnchantmentHelper.getEnchantmentLevel(Enchantment.baneOfArthropods.effectId, stack);
+			boolean inf = EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
+
+			if (!inf && !player.capabilities.isCreativeMode && !this.reduceExp(player, 5)) {
 				return;
 			}
 
@@ -121,8 +81,11 @@ public class ItemWindCleaver extends ItemSword {
 			// 8方向に飛ばす
 			for (int k = 0; k < 8; k++) {
 				float adj = k * 45.0F;
-				WindProjectile bullet = new WindProjectile(player.worldObj, player, 3.0F, 1.0F, 5.0F, adj);
+				WindProjectile bullet = new WindProjectile(player.worldObj, player, 3.0F, 1.0D + (sharp * 0.30D), 5.0F,
+						adj);
 				bullet.setParalysis(true);
+				bullet.setInsecticide(arthro);
+				bullet.setPurify(holy);
 				player.worldObj.spawnEntityInWorld(bullet);
 				player.worldObj.playSoundEffect(player.posX, player.posY - 1, player.posZ, "amtjp:wind", 0.15F, 0.75F);
 			}
@@ -134,21 +97,15 @@ public class ItemWindCleaver extends ItemSword {
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entity, ItemStack stack) {
 		if (entity != null && stack != null && !entity.worldObj.isRemote) {
-			NBTTagCompound nbt = stack.getTagCompound();
-			if (nbt == null) {
-				nbt = new NBTTagCompound();
-			}
-			boolean isReversal = false;
-			if (nbt.hasKey("Reverse")) {
-				isReversal = nbt.getBoolean("Reverse");
-			}
-			if (!isReversal)
+			CleaverMode mode = getMode(stack);
+			if (mode != CleaverMode.REVERSAL)
 				return false;
 
 			if (entity instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entity;
 				int exp = player.experienceTotal;
-				if (!player.capabilities.isCreativeMode && !this.reduceExp(player, 1)) {
+				boolean inf = EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0;
+				if (!inf && !player.capabilities.isCreativeMode && !this.reduceExp(player, 1)) {
 					return false;
 				}
 			}
@@ -161,7 +118,7 @@ public class ItemWindCleaver extends ItemSword {
 			int loot = EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, stack);
 
 			// damage
-			float dam = 10.0F + (sharp * 0.30F);
+			float dam = 2.0F + (sharp * 0.25F);
 
 			// knockback
 			float kno = 0.0F;
@@ -233,6 +190,53 @@ public class ItemWindCleaver extends ItemSword {
 		this.iconType = new IIcon[2];
 		for (int i = 0; i < 2; i++) {
 			this.iconType[i] = par1IconRegister.registerIcon("amtjp:tools/cleaver_wind_" + i);
+		}
+	}
+
+	/* === ICleaverItem === */
+
+	@Override
+	public void onCleaverAttackAndPeel(boolean isAttack, boolean isPeel, float attackAmmount, boolean isCritical,
+			EntityLivingBase target, float peelPower, ItemStack stack, EntityLivingBase owner) {
+		int blood = this.getBloodCount(stack);
+		CleaverMode mode = this.getMode(stack);
+		// 速度を剥ぐ
+		if (isPeel) {
+			AJPLogger.debugInfo("on peel");
+			Iterator iterator = owner.getActivePotionEffects().iterator();
+			int level = 0;
+			int dur = 0;
+			while (iterator.hasNext()) {
+				PotionEffect effect = (PotionEffect) iterator.next();
+				if (effect != null && effect.getPotionID() == Potion.moveSpeed.getId()) {
+					level = effect.getAmplifier();
+					dur = effect.getDuration() + 200;
+				}
+			}
+			if (level < 9 && this.itemRand.nextInt(8) == 0) {
+				level++;
+			}
+			if (dur > 12000) {
+				dur = 12000;
+			}
+
+			// ownerには速度上昇
+			owner.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), dur, level));
+
+			// 敵には速度低下
+			target.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 200, level));
+		}
+	}
+
+	@Override
+	public void onCleaverUpdate(int slot, boolean isHeld, float peelPower, ItemStack stack, EntityLivingBase owner) {
+		// 手持ち効果
+		if (owner.worldObj.isRemote || !isHeld)
+			return;
+		CleaverMode mode = this.getMode(stack);
+		if (mode == CleaverMode.REVERSAL) {
+			owner.fallDistance = 0.0F;
+			owner.addPotionEffect(new PotionEffect(Potion.jump.id, 4, 1));
 		}
 	}
 

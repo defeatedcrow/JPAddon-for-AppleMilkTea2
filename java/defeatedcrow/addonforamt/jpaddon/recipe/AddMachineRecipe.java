@@ -198,6 +198,8 @@ public class AddMachineRecipe {
 
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.squareDish, 1, 2), 1, "cropRadish");
 
+		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.squareDish, 1, 2), 1, "Radish");
+
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.squareDish, 1, 2), 1, "cropCucumber");
 
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(AddonJPCore.squareDish, 1, 2), 1, new ItemStack(
@@ -210,10 +212,13 @@ public class AddMachineRecipe {
 				Items.spider_eye, 1, 0));
 
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, "cropApple");
+
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
 				Blocks.double_plant, 1, 1));
+
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
 				Blocks.double_plant, 1, 4));
+
 		RecipeManagerJP.fermRecipe.addRecipe(new ItemStack(DCsAppleMilk.yeast, 1, 0), 2, new ItemStack(
 				Blocks.double_plant, 1, 5));
 	}
@@ -233,6 +238,13 @@ public class AddMachineRecipe {
 						"redbeans",
 						"bucketMilk" });
 
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.dough, 3, 1), true, null,
+				new Object[] {
+						new ItemStack(Items.wheat, 1, 0),
+						new ItemStack(DCsAppleMilk.foodTea, 1, 0),
+						"AzukiBeans",
+						"bucketMilk" });
+
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.dough, 3, 2), true, null,
 				new Object[] {
 						"foodSugar",
@@ -245,6 +257,12 @@ public class AddMachineRecipe {
 						"foodSugar",
 						new ItemStack(Items.porkchop, 1, 0),
 						"cabbage" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 0), true, null,
+				new Object[] {
+						"foodSugar",
+						new ItemStack(Items.porkchop, 1, 0),
+						"cropCabbage" });
 
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 1), true, null,
 				new Object[] {

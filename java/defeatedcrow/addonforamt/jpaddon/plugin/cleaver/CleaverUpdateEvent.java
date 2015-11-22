@@ -6,12 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.addonforamt.jpaddon.util.TimeCounter;
 
 public class CleaverUpdateEvent {
 
@@ -80,39 +78,24 @@ public class CleaverUpdateEvent {
 					}
 				}
 			}
-			// server side : potion制御
-			if (hold.getItem() == AJPCleaverPlugin.windCleaver) {
-				NBTTagCompound nbt = hold.getTagCompound();
-				if (nbt == null) {
-					nbt = new NBTTagCompound();
-				}
-				boolean rev = false;
-				if (nbt.hasKey("Reverse")) {
-					rev = nbt.getBoolean("Reverse");
-				}
+		}
+	}
 
-				if (rev) {
-					player.fallDistance = 0.0F;
-					player.addPotionEffect(new PotionEffect(Potion.jump.id, 4, 1));
-				}
-			} else if (hold.getItem() == AJPCleaverPlugin.nightCleaver) {
-				NBTTagCompound nbt = hold.getTagCompound();
-				if (nbt == null) {
-					nbt = new NBTTagCompound();
-				}
-				boolean rev = false;
-				if (nbt.hasKey("Reverse")) {
-					rev = nbt.getBoolean("Reverse");
-				}
-				boolean forced = false;
-				if (nbt.hasKey("Forced")) {
-					forced = nbt.getBoolean("Forced");
-				}
+	@SubscribeEvent
+	public void onDeath(LivingDeathEvent event) {
+		Entity entity = event.entity;
 
-				if (rev && !forced && !TimeCounter.isDayTime(player.worldObj)) {
-					player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 4, 0));
-					player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 4, 0));
-					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 4, 0));
+		// プレイヤーが死ぬと暴走が解除される
+		if (entity != null && (entity instanceof EntityPlayer)) {
+			EntityPlayer player = (EntityPlayer) event.entity;
+			ItemStack hold = player.getCurrentEquippedItem();
+			if (hold == null)
+				return;
+			if (hold.getItem() instanceof ItemNightCleaver) {
+				ItemNightCleaver night = (ItemNightCleaver) hold.getItem();
+				CleaverMode mode = night.getMode(hold);
+				if (mode == CleaverMode.BERSERK) {
+					night.setMode(hold, CleaverMode.NORMAL);
 				}
 			}
 		}

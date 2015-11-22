@@ -78,7 +78,7 @@ public class WindProjectile extends Entity implements IProjectile {
 		super(par1World);
 		this.renderDistanceWeight = 10.0D;
 		this.setSize(5F, 5F);
-		this.damage = 10.0D;
+		this.damage = 2.0D;
 		this.range = 4.0D;
 	}
 
@@ -312,11 +312,11 @@ public class WindProjectile extends Entity implements IProjectile {
 						// 特攻エンチャントの効果を載せる
 						double dam = this.damage;
 						if ((target instanceof EntityLivingBase) && ((EntityLivingBase) target).isEntityUndead()) {
-							dam += this.getPurificationLevel() * 3.0F;
+							dam += this.getPurificationLevel() * 2.0F;
 						}
 						if ((target instanceof EntityLivingBase)
 								&& ((EntityLivingBase) target).getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) {
-							dam += this.getInsecticideLevel() * 3.0F;
+							dam += this.getInsecticideLevel() * 2.0F;
 						}
 						// 0~2程度の乱数値を上乗せ
 						float i1 = (float) dam + this.rand.nextInt(3);
@@ -549,7 +549,7 @@ public class WindProjectile extends Entity implements IProjectile {
 			return DamageSource.drown;
 		} else {
 			if (entity instanceof EntityPlayer) {
-				return DamageSource.causePlayerDamage((EntityPlayer) entity);
+				return DamageSource.causeIndirectMagicDamage(entity, this);
 			} else if (entity instanceof EntityLivingBase) {
 				return DamageSource.causeMobDamage((EntityLivingBase) entity);
 			} else {

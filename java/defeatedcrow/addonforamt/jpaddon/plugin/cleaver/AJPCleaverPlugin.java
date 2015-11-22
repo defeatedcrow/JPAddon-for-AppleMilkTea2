@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import schr0.cleaver.api.ICleaverItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 
@@ -17,16 +18,14 @@ public class AJPCleaverPlugin {
 	public static Item nightCleaver;
 
 	public static Item normalCleaver = null;
-	public static Item blazeCleaver = null;
-	public static Item soulCleaver = null;
-	public static Item ogreCleaver = null;
+
+	// public static Item blazeCleaver = null;
+	// public static Item soulCleaver = null;
+	// public static Item ogreCleaver = null;
 
 	public static void load() {
 
-		normalCleaver = GameRegistry.findItem("Schr0sCleaver", "itemCleaverNormal");
-		blazeCleaver = GameRegistry.findItem("Schr0sCleaver", "itemCleaverBlaze");
-		soulCleaver = GameRegistry.findItem("Schr0sCleaver", "itemCleaverSoul");
-		ogreCleaver = GameRegistry.findItem("Schr0sCleaver", "itemCleaverOgre");
+		normalCleaver = GameRegistry.findItem("Schr0sCleaver", "cleaverNormal");
 
 		// new cleaver
 		windCleaver = new ItemWindCleaver().setUnlocalizedName("addonamtjp.cleaver_wind").setCreativeTab(
@@ -70,17 +69,7 @@ public class AJPCleaverPlugin {
 		if (item == null || item.getItem() == null)
 			return false;
 
-		if (normalCleaver != null && item.getItem() == normalCleaver)
-			flag = true;
-		else if (blazeCleaver != null && item.getItem() == blazeCleaver)
-			flag = true;
-		else if (soulCleaver != null && item.getItem() == soulCleaver)
-			flag = true;
-		else if (ogreCleaver != null && item.getItem() == ogreCleaver)
-			flag = true;
-		else if (windCleaver != null && item.getItem() == windCleaver)
-			flag = true;
-		else if (nightCleaver != null && item.getItem() == nightCleaver)
+		if (item.getItem() instanceof ICleaverItem)
 			flag = true;
 
 		return flag;
