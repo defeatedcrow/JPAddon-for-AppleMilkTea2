@@ -82,4 +82,7 @@ public class CommonProxyAJP implements IGuiHandler {
 		return false;
 	}
 
+	public boolean jumpWithCleaver() {
+		return false;
+	}
 }

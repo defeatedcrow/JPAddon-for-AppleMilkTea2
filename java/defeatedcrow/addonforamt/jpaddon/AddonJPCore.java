@@ -53,8 +53,8 @@ import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
 @Mod(
 		modid = "AMTAddonJP",
 		name = "AddonforAMT-JP",
-		version = "1.7.10_1.3b",
-		dependencies = "required-after:Forge@[10.13.0.1291,);required-after:DCsAppleMilk@[1.7.10_2.8e,);after:FluidityDC")
+		version = "1.7.10_1.4a",
+		dependencies = "required-after:Forge@[10.13.2.1448,);required-after:DCsAppleMilk@[1.7.10_2.9a,);after:FluidityDC")
 public class AddonJPCore {
 
 	@SidedProxy(clientSide = "defeatedcrow.addonforamt.jpaddon.client.ClientProxyAJP",
@@ -275,11 +275,11 @@ public class AddonJPCore {
 	}
 
 	public int getMinorVersion() {
-		return 3;
+		return 4;
 	}
 
 	public String getRivision() {
-		return "b";
+		return "a";
 	}
 
 	public String getModName() {

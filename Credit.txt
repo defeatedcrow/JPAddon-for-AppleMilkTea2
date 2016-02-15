@@ -1,0 +1,11 @@
+﻿Apple&Milk&Tea! mod is authored by defeatedcrow.
+wiki: http://defeatedcrow.wiki.fc2.com/
+forum (unofficial Japanese forum): http://forum.minecraftuser.jp/viewtopic.php?f=13&t=17657
+github: https://github.com/defeatedcrow/JPAddon-for-AppleMilkTea2
+
+# main author
+-defeatedcrow: created almost code and all resources (textures and sounds).
+
+# language file authors
+-TunkShif: zh_CN
+-doublrcore: zh_CN

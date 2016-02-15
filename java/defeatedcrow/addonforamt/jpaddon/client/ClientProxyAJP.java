@@ -1,6 +1,8 @@
 package defeatedcrow.addonforamt.jpaddon.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -138,4 +140,20 @@ public class ClientProxyAJP extends CommonProxyAJP {
 		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
 	}
 
+	@Override
+	public boolean jumpWithCleaver() {
+		EntityClientPlayerMP player = FMLClientHandler.instance().getClient().thePlayer;
+		if (player != null && player.isEntityAlive()) {
+			float yaw = player.rotationYaw;
+			double newMX = (-MathHelper.sin(yaw / 180.0F * (float) Math.PI) * MathHelper.cos(player.rotationPitch
+					/ 180.0F * (float) Math.PI));
+			double newMZ = (MathHelper.cos(yaw / 180.0F * (float) Math.PI) * MathHelper.cos(player.rotationPitch
+					/ 180.0F * (float) Math.PI));
+			double newMY = ((-MathHelper.sin(player.rotationPitch / 180.0F * (float) Math.PI)));
+			player.motionX += newMX * 0.5D;
+			player.motionZ += newMZ * 0.5D;
+			player.motionY += 0.25D + newMY * 0.5D;
+		}
+		return true;
+	}
 }

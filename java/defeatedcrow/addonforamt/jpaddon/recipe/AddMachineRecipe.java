@@ -394,16 +394,16 @@ public class AddMachineRecipe {
 				new ItemStack(Items.bone, 5, 0), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 1) });
 
 		// jaw crusher
-		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 0), false, null,
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 0), false, 1, null,
 				new Object[] { "oreSalt" });
 
-		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.materials, 3, 2), false,
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.materials, 3, 2), false, 0,
 				new ItemStack(AddonJPCore.materials, 1, 9), 0.25F, new Object[] { "gemSalt" });
 
-		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 1), false, null,
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.gems, 2, 1), false, 1, null,
 				new Object[] { "oreAlabaster" });
 
-		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.dye, 3, 15), false, null,
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.dye, 3, 15), false, 0, null,
 				new Object[] { "gemAlabaster" });
 	}
 

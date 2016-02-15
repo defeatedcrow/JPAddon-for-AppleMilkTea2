@@ -1,15 +1,14 @@
 package defeatedcrow.addonforamt.jpaddon.plugin.cleaver;
 
 import mods.defeatedcrow.common.DCsAppleMilk;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 
 public class CleaverUpdateEvent {
 
@@ -52,21 +51,12 @@ public class CleaverUpdateEvent {
 						this.pushSec = false;
 					}
 
-					if (rev && player instanceof EntityPlayerSP) {
+					if (rev && player.worldObj.isRemote) {
 						if (!player.onGround) {
 							if (DCsAppleMilk.proxy.isJumpKeyDown()) {
 								if (!this.pushKey) {
 									if (this.pushSec) {
-										float yaw = player.rotationYaw;
-										double newMX = (-MathHelper.sin(yaw / 180.0F * (float) Math.PI) * MathHelper
-												.cos(player.rotationPitch / 180.0F * (float) Math.PI));
-										double newMZ = (MathHelper.cos(yaw / 180.0F * (float) Math.PI) * MathHelper
-												.cos(player.rotationPitch / 180.0F * (float) Math.PI));
-										double newMY = ((-MathHelper.sin(player.rotationPitch / 180.0F
-												* (float) Math.PI)));
-										player.motionX += newMX * 0.5D;
-										player.motionZ += newMZ * 0.5D;
-										player.motionY += 0.25D + newMY * 0.5D;
+										AddonJPCore.proxy.jumpWithCleaver();
 									}
 								}
 								this.pushKey = true;

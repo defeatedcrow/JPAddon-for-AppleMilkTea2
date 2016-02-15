@@ -481,6 +481,16 @@ public class AddBasicRecipeJP {
 				"AzukiBeans",
 				new ItemStack(Blocks.tallgrass, 1, 1) }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDish, 1, 1), new Object[] {
+				"mochi",
+				"redbeans",
+				new ItemStack(Blocks.tallgrass, 1, 1) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDish, 1, 1), new Object[] {
+				"riceCake",
+				"AzukiBeans",
+				new ItemStack(Blocks.tallgrass, 1, 1) }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDish, 1, 7), new Object[] {
 				"cookingRice",
 				"cropStrawberry",
