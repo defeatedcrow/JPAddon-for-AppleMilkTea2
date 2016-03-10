@@ -28,7 +28,7 @@ public class AJPUnitEvent {
 			0 };
 
 	@SubscribeEvent
-	public void fallOnKinu(LivingEvent.LivingUpdateEvent event) {
+	public void UnitEvent(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.entityLiving;
 		if (living != null && !living.worldObj.isRemote && living instanceof EntityPlayer) {
 			// player
@@ -41,7 +41,7 @@ public class AJPUnitEvent {
 			}
 
 			// unit
-			EquipmentStats e = EntityPlayerManager.getEquipmentStats((EntityPlayer) event.entity);
+			EquipmentStats e = EntityPlayerManager.getEquipmentStats(player);
 			boolean hasIce = false;
 			boolean hasAntidote = false;
 			int size = 0;
@@ -100,6 +100,21 @@ public class AJPUnitEvent {
 
 			// 耐毒ユニット
 			if (hasAntidote) {
+				if (size > 3) {
+					if (player.isPotionActive(Potion.blindness.id)) {
+						player.removePotionEffect(Potion.blindness.id);
+					}
+					if (riding != null && riding.isPotionActive(Potion.blindness.id)) {
+						riding.removePotionEffect(Potion.blindness.id);
+					}
+
+					if (player.isPotionActive(Potion.confusion.id)) {
+						player.removePotionEffect(Potion.confusion.id);
+					}
+					if (riding != null && riding.isPotionActive(Potion.confusion.id)) {
+						riding.removePotionEffect(Potion.confusion.id);
+					}
+				}
 				if (size > 2) {
 					if (player.isPotionActive(Potion.wither.id)) {
 						player.removePotionEffect(Potion.wither.id);

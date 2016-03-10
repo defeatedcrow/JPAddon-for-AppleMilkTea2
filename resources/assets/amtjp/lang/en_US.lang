@@ -125,10 +125,11 @@ item.addonamtjp.kimono_take.name=Kimono (Bamboo)
 item.addonamtjp.kimono_sea.name=Kimono (Sea)
 item.addonamtjp.kimono_momiji.name=Kimono (Maple)
 
-item.addonamtjp.ice_unit.name=Frozen Tracer Unit
-item.addonamtjp.ice_rust_unit.name=Frozen Rusty Unit
+item.addonamtjp.ice_unit.name=Frostbound Unit
 item.addonamtjp.antidote_unit.name=Antidote Unit
-item.addonamtjp.antidote_rust_unit.name=Wet Rusty Unit
+item.addonamtjp.dic_unit.name=Dictionary Loupe Unit
+item.addonamtjp.qt_unit.name=Q.T. Unit
+item.addonamtjp.base_unit.name=Unit Base
 
 item.addonamtjp.cleaver_wind.name=Wind Cleaver
 item.addonamtjp.cleaver_night.name=Midnight Cleaver
