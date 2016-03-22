@@ -96,6 +96,14 @@ public class AddMachineRecipe {
 				AddonJPCore.jpBowls, 1, 4), new ItemStack(AddonJPCore.jpBowls_jp, 1, 4),
 				"amtjp:textures/items/contents/contents_kanijiru.png", "Crab Miso Soup");
 
+		RecipeRegisterManager.panRecipe.register(new ItemStack(AddonJPCore.minced, 1, 12), new ItemStack(
+				AddonJPCore.whiteDish, 1, 1), new ItemStack(AddonJPCore.whiteDish, 1, 1),
+				"amtjp:textures/items/contents/contents_winestew.png", "Wine Beef Stew");
+
+		RecipeRegisterManager.panRecipe.register(new ItemStack(AddonJPCore.minced, 1, 13), new ItemStack(
+				AddonJPCore.woodBowls, 1, 5), new ItemStack(AddonJPCore.woodBowls_jp, 1, 5),
+				"amtjp:textures/items/contents/contents_potatostew.png", "Potato Stew");
+
 	}
 
 	private static void addFondueRecipe() {
@@ -145,6 +153,12 @@ public class AddMachineRecipe {
 		RecipeRegisterManager.plateRecipe.register(new ItemStack(AddonJPCore.dough, 1, 2), new ItemStack(
 				AddonJPCore.jpDish, 1, 4), 120, true);
 
+		RecipeRegisterManager.plateRecipe.register(new ItemStack(AddonJPCore.dough, 1, 3), new ItemStack(
+				AddonJPCore.whiteDish, 1, 4), 120, true);
+
+		RecipeRegisterManager.plateRecipe.register(new ItemStack(Items.egg, 1, 0), new ItemStack(AddonJPCore.noDish, 1,
+				3), 120, false);
+
 		ArrayList<ItemStack> rice = new ArrayList<ItemStack>();
 		rice = OreDictionary.getOres("cookingRice");
 		for (ItemStack item : rice) {
@@ -163,6 +177,25 @@ public class AddMachineRecipe {
 	private static void addEvaporatorRecipe() {
 		RecipeRegisterManager.evaporatorRecipe.addRecipe(new ItemStack(AddonJPCore.materials, 1, 4), new FluidStack(
 				DCsAppleMilk.shothu_young, 100), new ItemStack(DCsAppleMilk.moromi, 1, 0), true);
+
+		if (OreDictionary.doesOreNameExist("cropAlmond") && !OreDictionary.getOres("cropAlmond").isEmpty()) {
+			for (ItemStack nuts : OreDictionary.getOres("cropAlmond")) {
+				RecipeRegisterManager.evaporatorRecipe.addRecipe(new ItemStack(DCsAppleMilk.dustWood, 1, 3),
+						new FluidStack(DCsAppleMilk.vegitableOil, 20), nuts, true);
+			}
+		}
+		if (OreDictionary.doesOreNameExist("cropOlive") && !OreDictionary.getOres("cropOlive").isEmpty()) {
+			for (ItemStack olive : OreDictionary.getOres("cropOlive")) {
+				RecipeRegisterManager.evaporatorRecipe.addRecipe(new ItemStack(DCsAppleMilk.dustWood, 1, 3),
+						new FluidStack(DCsAppleMilk.vegitableOil, 40), olive, true);
+			}
+		}
+		if (OreDictionary.doesOreNameExist("cropDate") && !OreDictionary.getOres("cropDate").isEmpty()) {
+			for (ItemStack date : OreDictionary.getOres("cropDate")) {
+				RecipeRegisterManager.evaporatorRecipe.addRecipe(new ItemStack(DCsAppleMilk.dustWood, 1, 3),
+						new FluidStack(DCsAppleMilk.vegitableOil, 30), date, true);
+			}
+		}
 	}
 
 	private static void addDryerRecipe() {
@@ -244,6 +277,13 @@ public class AddMachineRecipe {
 						new ItemStack(DCsAppleMilk.foodTea, 1, 0),
 						"AzukiBeans",
 						"bucketMilk" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.dough, 3, 3), true, null,
+				new Object[] {
+						"foodSugar",
+						new ItemStack(Items.wheat, 1, 0),
+						"cropApple",
+						"spiceCinnamon" });
 
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.dough, 3, 2), true, null,
 				new Object[] {
@@ -386,6 +426,27 @@ public class AddMachineRecipe {
 						"fishCrab",
 						"miso",
 						"bottleSoySause" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 12), true, null,
+				new Object[] {
+						new ItemStack(Items.beef, 1, 0),
+						"cropOnion",
+						"foodSalt",
+						"bottleWine" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 12), true, null,
+				new Object[] {
+						new ItemStack(Items.beef, 1, 0),
+						"onion",
+						"foodSalt",
+						"bottleWine" });
+
+		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(AddonJPCore.minced, 1, 13), true, null,
+				new Object[] {
+						"cropPotato",
+						"cropSpinach",
+						"cheese",
+						"bucketMilk" });
 
 		RecipeRegisterManager.processorRecipe.addRecipe(new ItemStack(Items.porkchop, 5, 0), true, new ItemStack(
 				Items.bone, 5, 0), 1.0F, new Object[] { new ItemStack(AddonJPCore.roastPig, 1, 0) });

@@ -32,7 +32,8 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 			"onionsoup",
 			"cornsoup",
 			"ramen_tonkotu",
-			"ramen_shoyu" };
+			"ramen_shoyu",
+			"potatostew" };
 
 	public ItemWoodBowls() {
 		super(true, false);
@@ -49,7 +50,7 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		return meta > 2 ? new int[] {
+		return (meta == 3 || meta == 4) ? new int[] {
 				12,
 				8 } : new int[] {
 				5,
@@ -60,7 +61,7 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
 		int m = par1 & 7;
-		int j = MathHelper.clamp_int(m, 0, nameType.length);
+		int j = MathHelper.clamp_int(m, 0, nameType.length - 1);
 		return par1 > 7 ? this.innerType[j] : this.iconType[j];
 	}
 
@@ -72,8 +73,8 @@ public class ItemWoodBowls extends EdibleEntityItem2 {
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		int m = par1ItemStack.getItemDamage();
-		return m < (nameType.length + 1) ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName()
-				+ "_" + m;
+		return m < nameType.length ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName() + "_"
+				+ m;
 	}
 
 	@Override

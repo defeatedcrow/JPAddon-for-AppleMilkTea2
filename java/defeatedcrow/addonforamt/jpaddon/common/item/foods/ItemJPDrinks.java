@@ -38,7 +38,8 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 			"oolong",
 			"vanilla_coffee",
 			"amazake",
-			"siruko" };
+			"siruko",
+			"sakeegg" };
 
 	public ItemJPDrinks() {
 		super(true, true);
@@ -76,7 +77,7 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		int m = par1ItemStack.getItemDamage();
-		return m < (nameType.length + 1) ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName()
+		return m < (nameType.length) ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName()
 				+ "_" + m;
 	}
 
@@ -116,6 +117,10 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if (!par2World.isRemote) {
 			this.addSSMoisture(6, 4F, par3EntityPlayer);
+			if (par1ItemStack.getItemDamage() == 6) {
+				this.addSSStamina(48, 6F, par3EntityPlayer);
+				;
+			}
 		}
 		return super.onEaten(par1ItemStack, par2World, par3EntityPlayer);
 	}
@@ -145,37 +150,10 @@ public class ItemJPDrinks extends EdibleEntityItem2 {
 			ret.add(new PotionEffect(Potion.field_76443_y.getId(), 600, 0));
 			break;
 		case 5:
+		case 6:
 			ret.add(new PotionEffect(AMTPotionManager.manager.AMTgetPotion("immunization").getId(), 600, 1));
 			break;
 		}
 		return ret;
 	}
-
-	// @Override
-	// @SideOnly(Side.CLIENT)
-	// // マウスオーバー時の表示情報
-	// public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List
-	// par3List, boolean par4) {
-	// super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-	// int l = par1ItemStack.getItemDamage();
-	// ArrayList<PotionEffect> effect = this.effectOnEaten(par2EntityPlayer, l);
-	// if (effect != null && this.showTooltip) {
-	// for (PotionEffect p : effect) {
-	// String s = StatCollector.translateToLocal(p.getEffectName()).trim();
-	// if (p.getAmplifier() > 0) {
-	// if (p.getAmplifier() < 4) {
-	// s = s + " " + StatCollector.translateToLocal("potion.potency." + p.getAmplifier()).trim();
-	// } else {
-	// s = s + " " + p.getAmplifier();
-	// }
-	// }
-	//
-	// if (p.getDuration() > 20) {
-	// s = s + " (" + Potion.getDurationString(p) + ")";
-	// }
-	//
-	// par3List.add(s);
-	// }
-	// }
-	// }
 }

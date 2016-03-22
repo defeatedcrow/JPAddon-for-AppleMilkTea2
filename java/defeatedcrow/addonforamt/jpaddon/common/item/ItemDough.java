@@ -13,7 +13,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDough extends Item {
 
-	private static String[] name = { "applecocoa", "matcha", "soycake" };
+	private static String[] name = {
+			"applecocoa",
+			"matcha",
+			"soycake",
+			"applepie" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconItemType[];
@@ -50,6 +54,7 @@ public class ItemDough extends Item {
 		par3List.add(new ItemStack(this, 1, 0));
 		par3List.add(new ItemStack(this, 1, 1));
 		par3List.add(new ItemStack(this, 1, 2));
+		par3List.add(new ItemStack(this, 1, 3));
 	}
 
 	@Override

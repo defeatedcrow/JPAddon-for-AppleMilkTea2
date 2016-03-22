@@ -68,7 +68,7 @@ public class ItemPig extends EdibleEntityItem2 {
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		int m = par1ItemStack.getItemDamage();
-		return m < (nameType.length + 1) ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName()
+		return m < (nameType.length) ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName()
 				+ "_" + m;
 	}
 

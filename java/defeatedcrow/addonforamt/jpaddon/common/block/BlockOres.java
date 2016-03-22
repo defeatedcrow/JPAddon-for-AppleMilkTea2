@@ -1,6 +1,7 @@
 package defeatedcrow.addonforamt.jpaddon.common.block;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -110,11 +111,19 @@ public class BlockOres extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IIconRegister) {
-		this.oreIcon = new IIcon[oreName.length];
-		for (int i = 0; i < oreName.length; ++i) {
-			this.oreIcon[i] = par1IIconRegister.registerIcon(getTexpass() + oreName[i]);
+		if (AddonJPCore.CAL.get(Calendar.MONTH) == Calendar.APRIL && AddonJPCore.CAL.get(Calendar.DATE) == 1) {
+			this.oreIcon = new IIcon[oreName.length];
+			for (int i = 0; i < oreName.length; ++i) {
+				this.oreIcon[i] = par1IIconRegister.registerIcon(getTexpass() + oreName[i] + "_4_1");
+			}
+			this.blockIcon = Blocks.stone.getBlockTextureFromSide(0);
+		} else {
+			this.oreIcon = new IIcon[oreName.length];
+			for (int i = 0; i < oreName.length; ++i) {
+				this.oreIcon[i] = par1IIconRegister.registerIcon(getTexpass() + oreName[i]);
+			}
+			this.blockIcon = Blocks.stone.getBlockTextureFromSide(0);
 		}
-		this.blockIcon = Blocks.stone.getBlockTextureFromSide(0);
 	}
 
 	private String getTexpass() {

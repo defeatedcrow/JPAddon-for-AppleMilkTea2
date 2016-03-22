@@ -235,6 +235,13 @@ public class AddBasicRecipeJP {
 				"tofuKinu",
 				"bucketSoymilk" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.dough, 3, 3), new Object[] {
+				"toolGrater",
+				"foodSugar",
+				new ItemStack(Items.wheat, 1, 0),
+				"cropApple",
+				"spiceCinnamon" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 0), new Object[] {
 				"toolGrater",
 				new ItemStack(Items.porkchop, 1, 0),
@@ -368,6 +375,27 @@ public class AddBasicRecipeJP {
 				"miso",
 				"cropLeek" }));
 
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 12), new Object[] {
+				"toolGrater",
+				new ItemStack(Items.beef, 1, 0),
+				"cropOnion",
+				"foodSalt",
+				"bottleWine" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 12), new Object[] {
+				"toolGrater",
+				new ItemStack(Items.beef, 1, 0),
+				"onion",
+				"foodSalt",
+				"bottleWine" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.minced, 1, 13), new Object[] {
+				"toolGrater",
+				"cropPotato",
+				"cropSpinach",
+				"cheese",
+				"bucketMilk" }));
+
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.noodle, 2, 0), new Object[] {
 				"toolGrater",
 				"dough" }));
@@ -416,6 +444,29 @@ public class AddBasicRecipeJP {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye, 2, 15), new Object[] {
 				"toolGrater",
 				"gemAlabaster" }));
+
+		// おまけのサドル作成
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.saddle, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				" Z ",
+				'X',
+				new ItemStack(Items.leather, 1, 0),
+				'Y',
+				"itemString",
+				'Z',
+				"ingotIron" }));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.saddle, 1, 0), new Object[] {
+				"XXX",
+				" Y ",
+				" Z ",
+				'X',
+				new ItemStack(Items.leather, 1, 0),
+				'Y',
+				"itemString",
+				'Z',
+				"ingotBronze" }));
 
 	}
 
@@ -530,6 +581,63 @@ public class AddBasicRecipeJP {
 				"foodEel",
 				"dustSugar",
 				"bottleSoySauce" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDrinks, 1, 6), new Object[] {
+				"foodEgg",
+				"dropHoney",
+				"bottleSake",
+				new ItemStack(DCsAppleMilk.emptyCup, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDrinks, 1, 6), new Object[] {
+				"foodEgg",
+				"dustSugar",
+				"bottleSake",
+				new ItemStack(DCsAppleMilk.emptyCup, 1, 0) }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDish, 1, 8), new Object[] {
+				"cropStrawberry",
+				"cheese",
+				"dustSugar",
+				"bucketMilk" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.jpDish, 1, 9), new Object[] {
+				"cropAlmond",
+				"bucketMilk",
+				"dustSugar" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.glassDish, 1, 7), new Object[] {
+				"rawShrimp",
+				"mayonnaise",
+				"cropTomato" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.glassDish, 1, 7), new Object[] {
+				"rawShrimp",
+				"mayonnaise",
+				"tomato" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.whiteDish, 1, 0), new Object[] {
+				new ItemStack(AddonJPCore.noDish, 1, 3),
+				new ItemStack(Blocks.brown_mushroom, 1, 0),
+				new ItemStack(Items.cooked_porkchop, 1, 0),
+				"cropTomato" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.whiteDish, 1, 0), new Object[] {
+				new ItemStack(AddonJPCore.noDish, 1, 3),
+				new ItemStack(Blocks.brown_mushroom, 1, 0),
+				new ItemStack(Items.cooked_porkchop, 1, 0),
+				"tomato" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.whiteDish, 1, 2), new Object[] {
+				new ItemStack(Items.beef, 1, 0),
+				"cheese",
+				"bottleVinegar",
+				"foodSalt" }));
+
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(AddonJPCore.whiteDish, 1, 3), new Object[] {
+				new ItemStack(Items.fish, 1, 32767),
+				"cropSpinach",
+				"bottleVinegar",
+				"foodSalt" }));
 
 	}
 

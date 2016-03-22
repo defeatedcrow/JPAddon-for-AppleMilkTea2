@@ -29,6 +29,7 @@ import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityNoDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityRiceBowl;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntitySquareDish;
+import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityWhiteDish;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderEntityWoodBowl;
 import defeatedcrow.addonforamt.jpaddon.client.entity.RenderWindProjectile;
 import defeatedcrow.addonforamt.jpaddon.client.item.ModelHaori;
@@ -46,6 +47,7 @@ import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPRice;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityNoDish;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntitySquarePlate;
+import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWhiteDish;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowl;
 import defeatedcrow.addonforamt.jpaddon.common.entity.WindProjectile;
 import defeatedcrow.addonforamt.jpaddon.plugin.nei.AJPPluginNEI;
@@ -84,6 +86,7 @@ public class ClientProxyAJP extends CommonProxyAJP {
 		RenderingRegistry.registerEntityRenderingHandler(EntityJPDrinks.class, new RenderEntityJPDrink());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRoastPig.class, new RenderEntityRoastPig());
 		RenderingRegistry.registerEntityRenderingHandler(WindProjectile.class, new RenderWindProjectile());
+		RenderingRegistry.registerEntityRenderingHandler(EntityWhiteDish.class, new RenderEntityWhiteDish());
 	}
 
 	@Override

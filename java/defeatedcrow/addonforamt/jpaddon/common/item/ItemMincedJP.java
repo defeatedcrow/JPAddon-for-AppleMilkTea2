@@ -25,7 +25,9 @@ public class ItemMincedJP extends Item {
 			"simotukare",
 			"takenoko",
 			"cornsoup",
-			"kanijiru" };
+			"kanijiru",
+			"winestew",
+			"potatostew" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconItemType[];

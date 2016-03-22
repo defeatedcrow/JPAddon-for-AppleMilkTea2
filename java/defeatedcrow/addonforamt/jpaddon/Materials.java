@@ -46,6 +46,7 @@ import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemPig;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemRiceBowls;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemRiceBowls_JP;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemSquareDish;
+import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemWhiteDish;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemWoodBowls;
 import defeatedcrow.addonforamt.jpaddon.common.item.foods.ItemWoodBowls_JP;
 import defeatedcrow.addonforamt.jpaddon.util.PotionJPLuck;
@@ -152,6 +153,10 @@ public class Materials {
 		AddonJPCore.roastPig = new ItemPig().setUnlocalizedName("addonamtjp.roast_pig").setCreativeTab(
 				AddonJPCore.amtjpTab);
 		GameRegistry.registerItem(AddonJPCore.roastPig, "addonamtjp.roast_pig");
+
+		AddonJPCore.whiteDish = new ItemWhiteDish().setUnlocalizedName("addonamtjp.dish_white").setCreativeTab(
+				AddonJPCore.amtjpTab);
+		GameRegistry.registerItem(AddonJPCore.whiteDish, "addonamtjp.dish_white");
 
 		// bamboo
 		AddonJPCore.riceBowls_jp = new ItemRiceBowls_JP().setUnlocalizedName("addonamtjp.bowl_rice_bamboo")

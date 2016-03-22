@@ -1,5 +1,7 @@
 package defeatedcrow.addonforamt.jpaddon;
 
+import java.util.Calendar;
+
 import mods.defeatedcrow.common.DCsAppleMilk;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,6 +35,7 @@ import defeatedcrow.addonforamt.jpaddon.common.entity.EntityJPRice_JP;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityNoDish;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityRoastPig;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntitySquarePlate;
+import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWhiteDish;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowl;
 import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWoodBowls_JP;
 import defeatedcrow.addonforamt.jpaddon.common.entity.WindProjectile;
@@ -53,7 +56,7 @@ import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
 @Mod(
 		modid = "AMTAddonJP",
 		name = "AddonforAMT-JP",
-		version = "1.7.10_1.4a",
+		version = "1.7.10_1.4e",
 		dependencies = "required-after:Forge@[10.13.2.1448,);required-after:DCsAppleMilk@[1.7.10_2.9a,);after:FluidityDC")
 public class AddonJPCore {
 
@@ -91,6 +94,7 @@ public class AddonJPCore {
 	public static Item glassDish;
 	public static Item noDish;
 	public static Item jpDrinks;
+	public static Item whiteDish;
 
 	// banboo basket
 	public static Item jpBowls_jp;
@@ -144,6 +148,9 @@ public class AddonJPCore {
 
 	// material
 	public static ItemArmor.ArmorMaterial materialAJPLinen;
+
+	// おまけ用
+	public static final Calendar CAL = Calendar.getInstance();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -213,6 +220,7 @@ public class AddonJPCore {
 		int idRiceBowl2 = 9; // EntityRegistry.findGlobalUniqueEntityId();
 		int idWoodBowl2 = 10; // EntityRegistry.findGlobalUniqueEntityId();
 		int idRoastPig = 12; // EntityRegistry.findGlobalUniqueEntityId();
+		int idWhiteDish = 13;
 
 		int windProj = 11;
 
@@ -235,7 +243,8 @@ public class AddonJPCore {
 				250, 5, true);
 		EntityRegistry
 				.registerModEntity(EntityRoastPig.class, "amtjp.entity.roast_pig", idRoastPig, this, 125, 5, true);
-
+		EntityRegistry.registerModEntity(EntityWhiteDish.class, "amtjp.entity.dish_white", idWhiteDish, this, 250, 5,
+				true);
 		EntityRegistry.registerModEntity(WindProjectile.class, "amtjp.entity.projectile_wind", windProj, this, 125, 5,
 				true);
 
@@ -279,7 +288,7 @@ public class AddonJPCore {
 	}
 
 	public String getRivision() {
-		return "a";
+		return "e";
 	}
 
 	public String getModName() {

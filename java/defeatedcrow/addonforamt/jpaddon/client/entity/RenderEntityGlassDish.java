@@ -21,6 +21,8 @@ public class RenderEntityGlassDish extends RenderFoodEntityBase {
 			"amtjp:textures/entity/foods/k_namerou.png");
 	protected static final ResourceLocation POTESARA_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/k_potesara.png");
+	protected static final ResourceLocation EBIMAYO_TEX = new ResourceLocation(
+			"amtjp:textures/entity/foods/k_ebimayo.png");
 
 	@Override
 	protected ResourceLocation getDecoTexture(FoodBaseEntity entity, byte meta, Deco deco) {
@@ -40,6 +42,8 @@ public class RenderEntityGlassDish extends RenderFoodEntityBase {
 			return NAMEROU_TEX;
 		case 6:
 			return POTESARA_TEX;
+		case 7:
+			return EBIMAYO_TEX;
 		default:
 			return NAMASU_TEX;
 		}

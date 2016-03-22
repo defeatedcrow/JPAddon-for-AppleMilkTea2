@@ -6,43 +6,50 @@ import mods.defeatedcrow.common.item.edible.EdibleEntityItem2;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import defeatedcrow.addonforamt.jpaddon.common.entity.EntityNoDish;
+import defeatedcrow.addonforamt.jpaddon.common.entity.EntityWhiteDish;
 
 /**
- * debuff効果の解除。
+ * 主菜系2。
+ * 回復量が大きく、スタミナも回復する。
  */
-public class ItemNoDish extends EdibleEntityItem2 {
+public class ItemWhiteDish extends EdibleEntityItem2 {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconType[];
 
 	private static final String[] nameType = new String[] {
-			"masuzushi",
-			"cheese",
-			"salad",
-			"sunnyegg" };
+			"breakfast",
+			"winestew",
+			"carpaccio_beef",
+			"carpaccio_fish",
+			"applepie" };
 
-	public ItemNoDish() {
+	public ItemWhiteDish() {
 		super(true, false);
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 		this.setMaxStackSize(64);
+		// this.setContainerItem(Items.bowl);
+	}
+
+	@Override
+	public ItemStack getReturnContainer(int meta) {
+		return meta == 1 ? new ItemStack(Items.bowl, 1, 0) : null;
 	}
 
 	@Override
 	public int[] hungerOnEaten(int meta) {
-		int a = meta == 2 ? 4 : 8;
 		return new int[] {
-				a,
-				3 };
+				10,
+				2 };
 	}
 
 	@Override
@@ -85,9 +92,7 @@ public class ItemNoDish extends EdibleEntityItem2 {
 
 	@Override
 	protected boolean spownEntityFoods(World world, EntityPlayer player, ItemStack item, double x, double y, double z) {
-		if (item.getItemDamage() == 3)
-			return false;
-		EntityNoDish entity = new EntityNoDish(world, item, x, y, z);
+		EntityWhiteDish entity = new EntityWhiteDish(world, item, x, y, z);
 		entity.rotationYaw = player.rotationYaw - 180.0F;
 
 		if (!world.isRemote && item != null) {
@@ -98,22 +103,9 @@ public class ItemNoDish extends EdibleEntityItem2 {
 
 	@Override
 	public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player) {
-		if (!world.isRemote) {
-			if (player.isPotionActive(Potion.blindness)) {
-				player.removePotionEffect(Potion.blindness.id);
-			}
-			if (player.isPotionActive(Potion.confusion)) {
-				player.removePotionEffect(Potion.confusion.id);
-			}
-			if (player.isPotionActive(Potion.hunger)) {
-				player.removePotionEffect(Potion.hunger.id);
-			}
-			if (player.isPotionActive(Potion.poison)) {
-				player.removePotionEffect(Potion.moveSlowdown.id);
-			}
-			if (player.isPotionActive(Potion.weakness)) {
-				player.removePotionEffect(Potion.weakness.id);
-			}
+		if (!world.isRemote && itemStack != null) {
+			int healAmo = 20;
+			this.addSSStamina(healAmo, 5F, player);
 		}
 		return super.onEaten(itemStack, world, player);
 	}

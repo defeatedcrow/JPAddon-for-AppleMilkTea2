@@ -27,11 +27,15 @@ public class RenderEntityJPDish extends RenderFoodEntityBase {
 			"amtjp:textures/entity/foods/hosiimo.png");
 	protected static final ResourceLocation SOYCAKE_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/soycake.png");
+	protected static final ResourceLocation BERRYCAKE_TEX = new ResourceLocation(
+			"amtjp:textures/entity/foods/berrycake.png");
 	protected static final ResourceLocation SENBEI_TEX = new ResourceLocation("amtjp:textures/entity/foods/senbei.png");
 	protected static final ResourceLocation BROWNIE_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/brownie.png");
 	protected static final ResourceLocation DAIHUKU_TEX = new ResourceLocation(
 			"amtjp:textures/entity/foods/daihuku_strawberry.png");
+	protected static final ResourceLocation NOUGAT_TEX = new ResourceLocation(
+			"amtjp:textures/entity/foods/nuts_nougat.png");
 
 	private ModelOniman oniman = new ModelOniman();
 	private ModelMoti moti = new ModelMoti();
@@ -84,6 +88,14 @@ public class RenderEntityJPDish extends RenderFoodEntityBase {
 		case 7:
 			this.bindTexture(DAIHUKU_TEX);
 			oniman.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			break;
+		case 8:
+			this.bindTexture(BERRYCAKE_TEX);
+			cake.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+			break;
+		case 9:
+			this.bindTexture(NOUGAT_TEX);
+			hosiimo.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 			break;
 		default:
 			this.bindTexture(ONIMAN_TEX);

@@ -35,7 +35,9 @@ public class ItemJPDish extends EdibleEntityItem2 {
 			"soycake",
 			"senbei",
 			"brownie",
-			"daihuku_strawberry" };
+			"daihuku_strawberry",
+			"berrycake",
+			"nuts_nougat" };
 
 	public ItemJPDish() {
 		super(true, false);
@@ -54,7 +56,7 @@ public class ItemJPDish extends EdibleEntityItem2 {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
-		int j = MathHelper.clamp_int(par1, 0, 7);
+		int j = MathHelper.clamp_int(par1, 0, 9);
 		return this.iconType[j];
 	}
 
@@ -66,7 +68,7 @@ public class ItemJPDish extends EdibleEntityItem2 {
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		int m = par1ItemStack.getItemDamage();
-		return m < 8 ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName() + "_" + m;
+		return m < 10 ? super.getUnlocalizedName() + "_" + nameType[m] : super.getUnlocalizedName() + "_" + m;
 	}
 
 	@Override
