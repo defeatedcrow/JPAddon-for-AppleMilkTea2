@@ -2,16 +2,6 @@ package defeatedcrow.addonforamt.jpaddon;
 
 import java.util.Calendar;
 
-import mods.defeatedcrow.common.DCsAppleMilk;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.potion.Potion;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -52,12 +42,21 @@ import defeatedcrow.addonforamt.jpaddon.recipe.FermenterRecipeRegister;
 import defeatedcrow.addonforamt.jpaddon.recipe.OreRegisterJP;
 import defeatedcrow.addonforamt.jpaddon.world.AddFishingHooks;
 import defeatedcrow.addonforamt.jpaddon.world.WorldGenAJPOres;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fluids.Fluid;
 
 @Mod(
 		modid = "AMTAddonJP",
 		name = "AddonforAMT-JP",
-		version = "1.7.10_1.4e",
-		dependencies = "required-after:Forge@[10.13.2.1448,);required-after:DCsAppleMilk@[1.7.10_2.9a,);after:FluidityDC")
+		version = "1.7.10_1.5a",
+		dependencies = "required-after:Forge@[10.13.4.1614,);required-after:endlessids@[1.7.4,);required-after:DCsAppleMilk@[1.7.10_NH_V2.10a,);after:FluidityDC")
 public class AddonJPCore {
 
 	@SidedProxy(clientSide = "defeatedcrow.addonforamt.jpaddon.client.ClientProxyAJP",
@@ -179,10 +178,8 @@ public class AddonJPCore {
 		Materials.addFluid();
 
 		// potion
-		if (DCsAppleMilk.RequiredCoreEnabled) {
-			Materials.addPotion();
-			AJPLogger.debugInfo("Succeed to add new potion effect.");
-		}
+		Materials.addPotion();
+		AJPLogger.debugInfo("Succeed to add new potion effect.");
 		if (luck == null) {
 			luck = Potion.regeneration;
 		}

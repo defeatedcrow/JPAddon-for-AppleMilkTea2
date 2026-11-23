@@ -1,0 +1,22 @@
+[
+  {
+    "description":"Get more Japanese Foods at AMT!",
+    "parent":"",
+    "logoFile":"",
+    "credits":"defeatedcrow",
+    "dependencies":[],
+    "modid":"AMTAddonJP",
+    "mcversion":"1.7.10",
+    "screenshots":[],
+    "authorList":[
+      "defeatedcrow"
+    ],
+    "name":"AddonforAMT-JP",
+    "url":"http://defeatedcrow.wiki.fc2.com/wiki/JapaneseAddonForAppleMilkTea2",
+    "updateUrl":"",
+    "version":"1.7.10_1.5a",
+    "requiredMods":[
+      "Minecraft Forge1.7.10 10.13.4.1614+, AppleMilkTea2_NH_V2.10a+"
+    ]
+  }
+]

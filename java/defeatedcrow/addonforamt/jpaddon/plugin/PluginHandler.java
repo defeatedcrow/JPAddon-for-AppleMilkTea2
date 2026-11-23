@@ -2,17 +2,16 @@ package defeatedcrow.addonforamt.jpaddon.plugin;
 
 import java.util.List;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.registry.GameRegistry;
 import defeatedcrow.addonforamt.jpaddon.AJPLogger;
 import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.plugin.cleaver.AJPCleaverPlugin;
 import defeatedcrow.addonforamt.jpaddon.plugin.ss2.AJPSS2Plugin;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class PluginHandler {
 	private PluginHandler() {
@@ -50,7 +49,7 @@ public class PluginHandler {
 			String s = mod.getVersion();
 			if (s.contains("ver2")) {
 				try {
-					AJPCleaverPlugin.load();
+					// AJPCleaverPlugin.load();
 					cleaver = true;
 				} catch (Exception e) {
 					AJPLogger.failLoadingModInfo("Schr0sCleaver");
@@ -98,16 +97,6 @@ public class PluginHandler {
 				wa = true;
 			} catch (Exception e) {
 				AJPLogger.failLoadingModInfo("Wa");
-				e.printStackTrace(System.err);
-			}
-		}
-
-		if (Loader.isModLoaded("TofuCraft")) {
-			try {
-				AJPTofuPlugin.load();
-				tofu = true;
-			} catch (Exception e) {
-				AJPLogger.failLoadingModInfo("TofuCraft");
 				e.printStackTrace(System.err);
 			}
 		}

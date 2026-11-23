@@ -1,5 +1,8 @@
 package defeatedcrow.addonforamt.jpaddon.event;
 
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 import mods.defeatedcrow.common.item.ItemChalcedonyKnife;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -7,11 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.world.BlockEvent;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
-import defeatedcrow.addonforamt.jpaddon.plugin.PluginHandler;
-import defeatedcrow.addonforamt.jpaddon.plugin.cleaver.AJPCleaverPlugin;
 
 public class GrassHarvestEvent {
 
@@ -32,8 +30,6 @@ public class GrassHarvestEvent {
 				if (hold != null) {
 					if (hold.getItem() instanceof ItemChalcedonyKnife) {
 						flag = true;
-					} else if (PluginHandler.cleaver) {
-						flag = AJPCleaverPlugin.isCleaver(hold);
 					}
 				}
 

@@ -1,13 +1,13 @@
 package defeatedcrow.addonforamt.jpaddon.plugin;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 import mods.defeatedcrow.api.recipe.RecipeRegisterManager;
 import mods.defeatedcrow.common.DCsAppleMilk;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import ruby.bamboo.BambooInit;
-import cpw.mods.fml.common.registry.GameRegistry;
-import defeatedcrow.addonforamt.jpaddon.AddonJPCore;
 
 public class AJPBambooPlugin {
 	private AJPBambooPlugin() {
