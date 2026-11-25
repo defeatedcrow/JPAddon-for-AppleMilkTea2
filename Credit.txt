@@ -9,3 +9,4 @@ github: https://github.com/defeatedcrow/JPAddon-for-AppleMilkTea2
 # language file authors
 -TunkShif: zh_CN
 -doublrcore: zh_CN
+-Ra1nb0w: zh_CN

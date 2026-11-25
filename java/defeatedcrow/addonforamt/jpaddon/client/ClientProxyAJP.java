@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -54,109 +55,113 @@ import defeatedcrow.addonforamt.jpaddon.plugin.nei.AJPPluginNEI;
 
 public class ClientProxyAJP extends CommonProxyAJP {
 
-	private static final ModelKimonoTite kimonoModel = new ModelKimonoTite();
-	private static final ModelHaori haoriModel = new ModelHaori();
+    private static final ModelKimonoTite kimonoModel = new ModelKimonoTite();
+    private static final ModelHaori haoriModel = new ModelHaori();
 
-	@Override
-	public World getClientWorld() {
-		return FMLClientHandler.instance().getClient().theWorld;
-	}
+    @Override
+    public World getClientWorld() {
+        return FMLClientHandler.instance()
+            .getClient().theWorld;
+    }
 
-	@Override
-	public int getRenderID() {
-		return RenderingRegistry.getNextAvailableRenderId();
-	}
+    @Override
+    public int getRenderID() {
+        return RenderingRegistry.getNextAvailableRenderId();
+    }
 
-	@Override
-	public void registerRenderers() {
-		RenderingRegistry.registerBlockHandler(new RenderBlockDryingRack());
-		RenderingRegistry.registerBlockHandler(new RenderOres());
-		RenderingRegistry.registerBlockHandler(new RenderAlabasterLamp());
-		RenderingRegistry.registerBlockHandler(new RenderAlabasterChandelier());
+    @Override
+    public void registerRenderers() {
+        RenderingRegistry.registerBlockHandler(new RenderBlockDryingRack());
+        RenderingRegistry.registerBlockHandler(new RenderOres());
+        RenderingRegistry.registerBlockHandler(new RenderAlabasterLamp());
+        RenderingRegistry.registerBlockHandler(new RenderAlabasterChandelier());
 
-		MinecraftForgeClient.registerItemRenderer(AddonJPCore.roastPig, new RenderItemRoastPig());
+        MinecraftForgeClient.registerItemRenderer(AddonJPCore.roastPig, new RenderItemRoastPig());
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityJPDish.class, new RenderEntityJPDish());
-		RenderingRegistry.registerEntityRenderingHandler(EntityJPBowl.class, new RenderEntityJPBowl());
-		RenderingRegistry.registerEntityRenderingHandler(EntityJPRice.class, new RenderEntityRiceBowl());
-		RenderingRegistry.registerEntityRenderingHandler(EntityWoodBowl.class, new RenderEntityWoodBowl());
-		RenderingRegistry.registerEntityRenderingHandler(EntitySquarePlate.class, new RenderEntitySquareDish());
-		RenderingRegistry.registerEntityRenderingHandler(EntityGlassBowl.class, new RenderEntityGlassDish());
-		RenderingRegistry.registerEntityRenderingHandler(EntityNoDish.class, new RenderEntityNoDish());
-		RenderingRegistry.registerEntityRenderingHandler(EntityJPDrinks.class, new RenderEntityJPDrink());
-		RenderingRegistry.registerEntityRenderingHandler(EntityRoastPig.class, new RenderEntityRoastPig());
-		RenderingRegistry.registerEntityRenderingHandler(WindProjectile.class, new RenderWindProjectile());
-		RenderingRegistry.registerEntityRenderingHandler(EntityWhiteDish.class, new RenderEntityWhiteDish());
-	}
+        RenderingRegistry.registerEntityRenderingHandler(EntityJPDish.class, new RenderEntityJPDish());
+        RenderingRegistry.registerEntityRenderingHandler(EntityJPBowl.class, new RenderEntityJPBowl());
+        RenderingRegistry.registerEntityRenderingHandler(EntityJPRice.class, new RenderEntityRiceBowl());
+        RenderingRegistry.registerEntityRenderingHandler(EntityWoodBowl.class, new RenderEntityWoodBowl());
+        RenderingRegistry.registerEntityRenderingHandler(EntitySquarePlate.class, new RenderEntitySquareDish());
+        RenderingRegistry.registerEntityRenderingHandler(EntityGlassBowl.class, new RenderEntityGlassDish());
+        RenderingRegistry.registerEntityRenderingHandler(EntityNoDish.class, new RenderEntityNoDish());
+        RenderingRegistry.registerEntityRenderingHandler(EntityJPDrinks.class, new RenderEntityJPDrink());
+        RenderingRegistry.registerEntityRenderingHandler(EntityRoastPig.class, new RenderEntityRoastPig());
+        RenderingRegistry.registerEntityRenderingHandler(WindProjectile.class, new RenderWindProjectile());
+        RenderingRegistry.registerEntityRenderingHandler(EntityWhiteDish.class, new RenderEntityWhiteDish());
+    }
 
-	@Override
-	public void registerTileEntity() {
-		ClientRegistry.registerTileEntity(TileDryingRack.class, "amtjp.tile.drying_rack", new RenderTileDryingRack());
-		ClientRegistry.registerTileEntity(TileAlabasterLamp.class, "amtjp.tile.lamp_alabaster",
-				new RenderTileAlabasterLamp());
-		ClientRegistry.registerTileEntity(TileChandelier.class, "amtjp.tile.chandelier_alabaster",
-				new RenderTileAlabasterChandelier());
-	}
+    @Override
+    public void registerTileEntity() {
+        ClientRegistry.registerTileEntity(TileDryingRack.class, "amtjp.tile.drying_rack", new RenderTileDryingRack());
+        ClientRegistry
+            .registerTileEntity(TileAlabasterLamp.class, "amtjp.tile.lamp_alabaster", new RenderTileAlabasterLamp());
+        ClientRegistry.registerTileEntity(
+            TileChandelier.class,
+            "amtjp.tile.chandelier_alabaster",
+            new RenderTileAlabasterChandelier());
+    }
 
-	@Override
-	public int addArmor(String armor) {
-		return RenderingRegistry.addNewArmourRendererPrefix(armor);
-	}
+    @Override
+    public int addArmor(String armor) {
+        return RenderingRegistry.addNewArmourRendererPrefix(armor);
+    }
 
-	@Override
-	public void registerFluidTex() {
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+    @Override
+    public void registerFluidTex() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	@SubscribeEvent
-	public void onTextureStitch(TextureStitchEvent.Post event) {
-		AddonJPCore.shoyu_young.setIcons(AddonJPCore.fluidDummy.getIcon(0, 0));
-		AddonJPCore.komezu_young.setIcons(AddonJPCore.fluidDummy.getIcon(0, 1));
-		AddonJPCore.shoyu.setIcons(AddonJPCore.fluidDummy.getIcon(0, 2));
-		AddonJPCore.komezu.setIcons(AddonJPCore.fluidDummy.getIcon(0, 3));
-	}
+    @SubscribeEvent
+    public void onTextureStitch(TextureStitchEvent.Post event) {
+        AddonJPCore.shoyu_young.setIcons(AddonJPCore.fluidDummy.getIcon(0, 0));
+        AddonJPCore.komezu_young.setIcons(AddonJPCore.fluidDummy.getIcon(0, 1));
+        AddonJPCore.shoyu.setIcons(AddonJPCore.fluidDummy.getIcon(0, 2));
+        AddonJPCore.komezu.setIcons(AddonJPCore.fluidDummy.getIcon(0, 3));
+    }
 
-	@Override
-	public ModelKimonoTite getKimonoModel() {
-		return kimonoModel;
-	}
+    @Override
+    public ModelKimonoTite getKimonoModel() {
+        return kimonoModel;
+    }
 
-	@Override
-	public ModelHaori getHaoriModel() {
-		return haoriModel;
-	}
+    @Override
+    public ModelHaori getHaoriModel() {
+        return haoriModel;
+    }
 
-	@Override
-	public void loadNEI() {
-		if (Loader.isModLoaded("NotEnoughItems")) {
-			try {
-				AJPPluginNEI.load();
-			} catch (Exception e) {
-				AJPLogger.failLoadingModInfo("NotEnoughItems");
-				e.printStackTrace(System.err);
-			}
-		}
-	}
+    @Override
+    public void loadNEI() {
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            try {
+                AJPPluginNEI.load();
+            } catch (Exception e) {
+                AJPLogger.failLoadingModInfo("NotEnoughItems");
+                e.printStackTrace(System.err);
+            }
+        }
+    }
 
-	@Override
-	public boolean vanillaFancyRenderMode() {
-		return Minecraft.getMinecraft().gameSettings.fancyGraphics;
-	}
+    @Override
+    public boolean vanillaFancyRenderMode() {
+        return Minecraft.getMinecraft().gameSettings.fancyGraphics;
+    }
 
-	@Override
-	public boolean jumpWithCleaver() {
-		EntityClientPlayerMP player = FMLClientHandler.instance().getClient().thePlayer;
-		if (player != null && player.isEntityAlive()) {
-			float yaw = player.rotationYaw;
-			double newMX = (-MathHelper.sin(yaw / 180.0F * (float) Math.PI) * MathHelper.cos(player.rotationPitch
-					/ 180.0F * (float) Math.PI));
-			double newMZ = (MathHelper.cos(yaw / 180.0F * (float) Math.PI) * MathHelper.cos(player.rotationPitch
-					/ 180.0F * (float) Math.PI));
-			double newMY = ((-MathHelper.sin(player.rotationPitch / 180.0F * (float) Math.PI)));
-			player.motionX += newMX * 0.5D;
-			player.motionZ += newMZ * 0.5D;
-			player.motionY += 0.25D + newMY * 0.5D;
-		}
-		return true;
-	}
+    @Override
+    public boolean jumpWithCleaver() {
+        EntityClientPlayerMP player = FMLClientHandler.instance()
+            .getClient().thePlayer;
+        if (player != null && player.isEntityAlive()) {
+            float yaw = player.rotationYaw;
+            double newMX = (-MathHelper.sin(yaw / 180.0F * (float) Math.PI)
+                * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI));
+            double newMZ = (MathHelper.cos(yaw / 180.0F * (float) Math.PI)
+                * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI));
+            double newMY = ((-MathHelper.sin(player.rotationPitch / 180.0F * (float) Math.PI)));
+            player.motionX += newMX * 0.5D;
+            player.motionZ += newMZ * 0.5D;
+            player.motionY += 0.25D + newMY * 0.5D;
+        }
+        return true;
+    }
 }

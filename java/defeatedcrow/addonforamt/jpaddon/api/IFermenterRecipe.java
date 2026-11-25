@@ -6,16 +6,16 @@ import net.minecraft.item.ItemStack;
 
 public interface IFermenterRecipe {
 
-	Object getInput();
+    Object getInput();
 
-	ArrayList<ItemStack> getProcessedInput();
+    ArrayList<ItemStack> getProcessedInput();
 
-	ItemStack getOutput();
+    ItemStack getOutput();
 
-	ItemStack getSecondary(ItemStack in);
+    ItemStack getSecondary(ItemStack in);
 
-	int getTime();
+    int getTime();
 
-	public boolean matches(ItemStack items);
+    public boolean matches(ItemStack items);
 
 }

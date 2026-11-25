@@ -8,27 +8,27 @@ import net.minecraft.world.World;
 
 public class ItemDummyFluidJP extends ItemBlock {
 
-	public ItemDummyFluidJP(Block block) {
-		super(block);
-		setMaxDamage(0);
-		setHasSubtypes(true);
-	}
+    public ItemDummyFluidJP(Block block) {
+        super(block);
+        setMaxDamage(0);
+        setHasSubtypes(true);
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int m = (par1ItemStack.getItemDamage());
-		return super.getUnlocalizedName() + "_" + m;
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack par1ItemStack) {
+        int m = (par1ItemStack.getItemDamage());
+        return super.getUnlocalizedName() + "_" + m;
+    }
 
-	@Override
-	public int getMetadata(int par1) {
-		return par1;
-	}
+    @Override
+    public int getMetadata(int par1) {
+        return par1;
+    }
 
-	// 設置禁止
-	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_) {
-		return p_77659_1_;
-	}
+    // 設置禁止
+    @Override
+    public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_) {
+        return p_77659_1_;
+    }
 
 }
